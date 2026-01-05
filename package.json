@@ -9,17 +9,20 @@
     "start": "next start",
     "lint": "eslint",
     "db:seed": "tsx prisma/seed.ts",
+    "db:migrate:sqlite": "node scripts/migrate_sqlite_to_postgres.js",
     "catalog:probe": "node scripts/catalog_probe.js",
     "catalog:import": "node scripts/catalog_import.js",
     "images:import": "node scripts/images_import_by_code.js",
     "catalog:images": "node scripts/catalog_page_images.js"
   },
   "prisma": {
-    "schema": "prisma/schema.prisma"
+    "schema": "prisma/schema.prisma",
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.88",
     "@prisma/client": "^5.22.0",
+    "better-sqlite3": "^12.5.0",
     "next": "16.1.1",
     "pdf-parse": "1.1.1",
     "pdfjs-dist": "4.10.38",
