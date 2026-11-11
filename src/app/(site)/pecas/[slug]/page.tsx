@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AddToQuoteButton from "@/components/AddToQuoteButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ProductCard from "@/components/ProductCard";
 import ProductGallery from "@/components/ProductGallery";
@@ -80,16 +81,16 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
         <div>
           <div className="flex flex-wrap items-center gap-3">
-            <span className="border border-line bg-surface px-3 py-1 font-mono text-xs uppercase tracking-wider text-steel">
-              {code}
-            </span>
             <span className="border border-accent/30 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-accent">
               {product.category.name}
             </span>
           </div>
-          <h1 className="mt-5 font-display text-4xl font-bold uppercase leading-[0.92] tracking-[-0.035em] text-fg sm:text-5xl">
-            {product.name}
+          <h1 className="mt-4 font-display text-5xl font-extrabold uppercase leading-[0.92] tracking-[-0.035em] text-fg sm:text-6xl">
+            {code}
           </h1>
+          <p className="mt-3 font-display text-2xl font-semibold uppercase leading-tight text-muted sm:text-3xl">
+            {product.name}
+          </p>
 
           {models.length > 0 ? (
             <section className="mt-7">
@@ -143,13 +144,29 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             <p className="mt-2 text-sm text-muted">
               Informe quantidade e aplicação para receber um retorno.
             </p>
+            <div className="mt-5">
+              <AddToQuoteButton
+                size="lg"
+                product={{
+                  productId: product.id,
+                  slug: product.slug,
+                  code,
+                  name: product.name,
+                  image:
+                    product.images.find((image) => image.isPrimary)?.url ??
+                    product.images[0]?.url ??
+                    null,
+                  machine: product.category.name,
+                }}
+              />
+            </div>
             <Link
               href={quoteLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex min-h-12 w-full items-center justify-center bg-accent px-5 text-sm font-bold text-accent-fg transition-colors hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              className="mt-3 inline-flex min-h-10 w-full items-center justify-center text-xs font-semibold text-steel underline decoration-line underline-offset-4 transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
-              Solicitar no WhatsApp
+              Falar direto no WhatsApp
             </Link>
             <p className="mt-3 text-center font-mono text-[10px] text-muted">
               Sem compromisso <span aria-hidden="true">•</span> Retorno rápido

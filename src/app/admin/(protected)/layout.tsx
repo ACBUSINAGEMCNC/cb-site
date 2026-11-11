@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { requireAdminUser } from "@/lib/adminAuth";
+import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +29,13 @@ function LogoutForm({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function AdminNavigation({ mobile = false }: { mobile?: boolean }) {
+function AdminNavigation({
+  mobile = false,
+  newQuotes = 0,
+}: {
+  mobile?: boolean;
+  newQuotes?: number;
+}) {
   return (
     <nav
       aria-label="Navegação do painel"
@@ -38,11 +45,16 @@ function AdminNavigation({ mobile = false }: { mobile?: boolean }) {
         <Link
           key={item.href}
           href={item.href}
-          className={`min-h-10 border border-transparent px-3 py-2 text-sm text-muted transition-colors hover:border-line hover:bg-surface-2 hover:text-fg ${
-            mobile ? "whitespace-nowrap" : "block"
+          className={`flex min-h-10 items-center justify-between gap-2 border border-transparent px-3 py-2 text-sm text-muted transition-colors hover:border-line hover:bg-surface-2 hover:text-fg ${
+            mobile ? "whitespace-nowrap" : ""
           }`}
         >
           {item.label}
+          {item.href === "/admin/orcamentos" && newQuotes > 0 ? (
+            <span className="grid min-h-5 min-w-5 place-items-center bg-accent px-1 font-mono text-[10px] font-semibold leading-none text-accent-fg">
+              {newQuotes > 99 ? "99+" : newQuotes}
+            </span>
+          ) : null}
         </Link>
       ))}
     </nav>
@@ -56,6 +68,9 @@ export default async function AdminProtectedLayout({
 }) {
   const admin = await requireAdminUser();
   if (!admin) redirect("/admin/login");
+  const newQuotes = await prisma.quoteRequest.count({
+    where: { status: "novo" },
+  });
 
   return (
     <div className="min-h-screen bg-bg text-fg">
@@ -77,7 +92,7 @@ export default async function AdminProtectedLayout({
             Administração
           </p>
           <div className="mt-3">
-            <AdminNavigation />
+            <AdminNavigation newQuotes={newQuotes} />
           </div>
         </div>
         <div className="mt-auto space-y-3 border-t border-line p-4">
@@ -113,7 +128,7 @@ export default async function AdminProtectedLayout({
             </div>
           </div>
           <div className="overflow-x-auto border-t border-line px-3 py-2">
-            <AdminNavigation mobile />
+            <AdminNavigation mobile newQuotes={newQuotes} />
           </div>
         </header>
         <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-10">

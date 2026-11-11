@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import MobileSiteMenu from "@/components/MobileSiteMenu";
+import QuoteCartBadge from "@/components/QuoteCartBadge";
 import { SITE, whatsappLink } from "@/lib/site";
 
 const navigation = [
@@ -89,6 +90,7 @@ export default function SiteHeader() {
             </button>
           </form>
 
+          <QuoteCartBadge />
           <Link
             href={whatsappLink("Olá! Gostaria de solicitar um orçamento.")}
             target="_blank"
@@ -99,7 +101,10 @@ export default function SiteHeader() {
           </Link>
         </div>
 
-        <MobileSiteMenu navigation={navigation} />
+        <div className="flex items-center gap-2 lg:hidden">
+          <QuoteCartBadge />
+          <MobileSiteMenu navigation={navigation} />
+        </div>
       </div>
       <div className="hazard-stripe h-1" aria-hidden="true" />
     </header>

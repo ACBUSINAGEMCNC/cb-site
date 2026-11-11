@@ -133,8 +133,8 @@ export default async function HomePage() {
             <div className="absolute right-[1%] top-[5%] h-[42%] w-[38%] border border-line bg-surface/80 p-2 shadow-xl shadow-black/30 sm:p-3">
               <div className="product-stage relative h-full w-full">
                 <Image
-                  src="/catalog/plantadeira/cq69513.png"
-                  alt="Eixo de roda dupla para plantadeira"
+                  src="/catalog/colheitadeira/de21086.png"
+                  alt="Caixa de acionamento da navalha para colheitadeira"
                   fill
                   priority
                   sizes="(max-width: 767px) 36vw, 22vw"
@@ -142,7 +142,7 @@ export default async function HomePage() {
                 />
               </div>
               <span className="absolute bottom-2 left-2 border border-line bg-bg/90 px-2 py-1 font-mono text-[9px] text-steel sm:bottom-3 sm:left-3 sm:text-[10px]">
-                CQ69513
+                DE21086
               </span>
             </div>
             <div className="absolute bottom-[2%] right-[7%] h-[50%] w-[53%] border border-line bg-surface/90 p-2 shadow-2xl shadow-black/50 sm:p-4">

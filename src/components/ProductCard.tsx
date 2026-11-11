@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { whatsappLink } from "@/lib/site";
+import AddToQuoteButton from "@/components/AddToQuoteButton";
 import GearIcon from "@/components/GearIcon";
 
 export type ProductCardData = {
+  id: number;
   slug: string;
   name: string;
   internalCode: string | null;
@@ -22,9 +23,6 @@ export default function ProductCard({ product }: { product: ProductCardData }) {
   const primaryImage =
     product.images.find((image) => image.isPrimary) ?? product.images[0];
   const code = product.internalCode ?? product.slug.toUpperCase();
-  const quoteLink = whatsappLink(
-    `Olá! Quero orçamento da peça ${code} - ${product.name}`
-  );
 
   return (
     <article className="group relative flex h-full flex-col border border-line bg-surface transition duration-200 hover:-translate-y-0.5 hover:border-accent/40">
@@ -47,31 +45,33 @@ export default function ProductCard({ product }: { product: ProductCardData }) {
                 <GearIcon className="h-12 w-12" />
               </div>
             )}
-            <span className="absolute left-2 top-2 z-10 border border-line bg-bg/90 px-2 py-1 font-mono text-[10px] uppercase tracking-wide text-steel">
-              {code}
-            </span>
           </div>
         </div>
 
         <div className="px-4 pb-1">
-          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
+          <span className="inline-block border border-line px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-steel">
             {product.category.name}
-          </p>
-          <h3 className="mt-2 line-clamp-2 min-h-11 font-display text-xl font-semibold uppercase leading-tight tracking-tight text-fg">
-            {product.name}
+          </span>
+          <h3 className="mt-3 font-mono text-lg font-bold leading-none tracking-tight text-accent sm:text-xl">
+            {code}
           </h3>
+          <p className="mt-2 line-clamp-2 min-h-10 font-display text-base font-semibold uppercase leading-snug text-fg">
+            {product.name}
+          </p>
         </div>
       </Link>
 
       <div className="px-4 pb-4 pt-3">
-        <Link
-          href={quoteLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative z-20 inline-flex min-h-10 w-full items-center justify-center border border-line px-3 text-xs font-semibold text-steel transition-colors duration-200 hover:border-accent/50 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-        >
-          Solicitar orçamento
-        </Link>
+        <AddToQuoteButton
+          product={{
+            productId: product.id,
+            slug: product.slug,
+            code,
+            name: product.name,
+            image: primaryImage?.url ?? null,
+            machine: product.category.name,
+          }}
+        />
       </div>
     </article>
   );

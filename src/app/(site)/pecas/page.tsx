@@ -53,20 +53,6 @@ function FilterLinks({
 }) {
   return (
     <ul className="mt-3 space-y-1">
-      <li>
-        <Link
-          href={catalogHref({ query })}
-          aria-current={!selectedCategory ? "page" : undefined}
-          className={`flex min-h-10 items-center justify-between px-3 text-sm transition-colors ${
-            !selectedCategory
-              ? "bg-surface-2 text-accent"
-              : "text-muted hover:bg-surface-2 hover:text-fg"
-          }`}
-        >
-          Todas
-          {showCounts ? <span className="font-mono text-xs">{categories.reduce((n, c) => n + c._count.products, 0)}</span> : null}
-        </Link>
-      </li>
       {categories.map((category) => (
         <li key={category.slug}>
           <Link
@@ -85,6 +71,20 @@ function FilterLinks({
           </Link>
         </li>
       ))}
+      <li className="border-t border-line pt-1">
+        <Link
+          href={catalogHref({ query })}
+          aria-current={!selectedCategory ? "page" : undefined}
+          className={`flex min-h-10 items-center justify-between px-3 text-sm transition-colors ${
+            !selectedCategory
+              ? "bg-surface-2 text-accent"
+              : "text-muted hover:bg-surface-2 hover:text-fg"
+          }`}
+        >
+          Todas
+          {showCounts ? <span className="font-mono text-xs">{categories.reduce((n, c) => n + c._count.products, 0)}</span> : null}
+        </Link>
+      </li>
     </ul>
   );
 }

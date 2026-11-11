@@ -1,19 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
+import { formatQuoteNumber } from "@/lib/quote-message";
+import { quoteStatusClass, quoteStatusLabel } from "@/lib/quoteStatus";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboardPage() {
-  const [activeProducts, productsWithoutImages, categories, highlights] =
-    await Promise.all([
-      prisma.product.count({ where: { isActive: true } }),
-      prisma.product.count({
-        where: { isActive: true, images: { none: {} } },
-      }),
-      prisma.category.count(),
-      prisma.product.count({ where: { isHighlighted: true, isActive: true } }),
-    ]);
+  const [
+    activeProducts,
+    productsWithoutImages,
+    categories,
+    highlights,
+    recentQuotes,
+  ] = await Promise.all([
+    prisma.product.count({ where: { isActive: true } }),
+    prisma.product.count({
+      where: { isActive: true, images: { none: {} } },
+    }),
+    prisma.category.count(),
+    prisma.product.count({ where: { isHighlighted: true, isActive: true } }),
+    prisma.quoteRequest.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 10,
+      include: { _count: { select: { items: true } } },
+    }),
+  ]);
 
   const stats = [
     { label: "Peças ativas", value: activeProducts },
@@ -103,6 +115,56 @@ export default async function AdminDashboardPage() {
             Confira como as peças ativas aparecem no site.
           </p>
         </Link>
+      </section>
+
+      <section className="mt-8 border border-line bg-surface">
+        <header className="flex items-baseline justify-between gap-3 border-b border-line px-5 py-4">
+          <h2 className="font-display text-xl font-bold uppercase text-fg">
+            Orçamentos recentes
+          </h2>
+          <Link
+            href="/admin/orcamentos"
+            className="text-xs text-steel underline decoration-line underline-offset-4 hover:text-accent"
+          >
+            Ver todos
+          </Link>
+        </header>
+        {recentQuotes.length > 0 ? (
+          <ul className="divide-y divide-line">
+            {recentQuotes.map((quote) => (
+              <li key={quote.id}>
+                <Link
+                  href={`/admin/orcamentos/${quote.id}`}
+                  className="flex items-center justify-between gap-4 px-5 py-3 transition-colors hover:bg-surface-2"
+                >
+                  <div className="min-w-0">
+                    <p className="font-mono text-sm font-semibold text-accent">
+                      {formatQuoteNumber(quote.id)}
+                    </p>
+                    <p className="mt-0.5 truncate text-sm text-fg">
+                      {quote.name}
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-3">
+                    <span className="font-mono text-xs text-muted">
+                      {quote._count.items}{" "}
+                      {quote._count.items === 1 ? "item" : "itens"}
+                    </span>
+                    <span
+                      className={`border px-2 py-1 font-mono text-[10px] uppercase tracking-wider ${quoteStatusClass(quote.status)}`}
+                    >
+                      {quoteStatusLabel(quote.status)}
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="px-5 py-6 text-sm text-muted">
+            Nenhum orçamento recebido ainda.
+          </p>
+        )}
       </section>
 
       <section className="mt-8 flex flex-col gap-5 border border-line bg-surface-2 p-5 sm:flex-row sm:items-center sm:p-6">
