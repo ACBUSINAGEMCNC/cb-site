@@ -258,6 +258,35 @@ export default async function PecasPage({
             ) : null}
           </div>
 
+          <div className="mt-5 flex items-start gap-3 border border-line bg-surface px-4 py-3">
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              className="mt-0.5 h-4 w-4 shrink-0 text-accent"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="8.5"
+                stroke="currentColor"
+                strokeWidth="1.7"
+              />
+              <path
+                d="M12 10.8v5"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+              />
+              <circle cx="12" cy="7.8" r="1.1" fill="currentColor" />
+            </svg>
+            <p className="font-mono text-xs leading-5 text-muted">
+              Dica: adicione as peças ao orçamento e envie tudo de uma vez pelo
+              WhatsApp. Sem cadastro e sem preço exibido — retornamos com
+              disponibilidade e valores.
+            </p>
+          </div>
+
           {products.length > 0 ? (
             <div className="mt-5 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
               {products.map((product) => (

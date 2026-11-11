@@ -51,13 +51,15 @@ export default async function OrcamentoConcluidoPage({
         Pedido registrado
       </p>
       <h1 className="mt-2 font-display text-4xl font-bold uppercase leading-none text-fg sm:text-6xl">
-        Orçamento {number}
+        Orçamento {number} enviado!
       </h1>
       <p className="mt-4 max-w-2xl text-sm leading-6 text-muted">
-        Recebemos seu pedido, {quote.name.split(" ")[0]}. Para agilizar o
-        retorno, envie o resumo pelo WhatsApp — nossa equipe confirma
-        disponibilidade e valores.
+        Recebemos seu pedido, {quote.name.split(" ")[0]}. Falta só um passo:
       </p>
+      <ol className="mt-3 max-w-2xl list-decimal space-y-1 pl-5 text-sm leading-6 text-muted">
+        <li>Envie a mensagem no WhatsApp com a lista (botão abaixo).</li>
+        <li>Se quiser, baixe o PDF do pedido e anexe na conversa.</li>
+      </ol>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
         <Link

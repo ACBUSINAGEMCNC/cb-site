@@ -61,8 +61,8 @@ export default function QuoteCartClient() {
         Seu orçamento
       </h1>
       <p className="mt-3 max-w-2xl text-sm leading-6 text-muted">
-        Revise as peças, ajuste as quantidades e envie para nossa equipe. Os
-        valores são informados no retorno.
+        Revise as peças, ajuste quantidades e envie — responderemos com
+        disponibilidade e valores.
       </p>
 
       {!hydrated ? (
@@ -75,7 +75,7 @@ export default function QuoteCartClient() {
             Seu orçamento está vazio
           </h2>
           <p className="mt-2 max-w-xl text-sm leading-6 text-muted">
-            Navegue pelo catálogo e adicione as peças que precisa pelo código.
+            Navegue pelo catálogo e adicione peças.
           </p>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row">
             <Link

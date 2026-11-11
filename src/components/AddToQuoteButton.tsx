@@ -14,9 +14,10 @@ export default function AddToQuoteButton({
   size = "sm",
   className = "",
 }: AddToQuoteButtonProps) {
-  const { items, addItem, hydrated } = useQuoteCart();
+  const { items, addItem, flyToCart, hydrated } = useQuoteCart();
   const [justAdded, setJustAdded] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     return () => {
@@ -28,6 +29,8 @@ export default function AddToQuoteButton({
 
   function handleClick() {
     addItem(product, 1);
+    const rect = buttonRef.current?.getBoundingClientRect();
+    if (rect) flyToCart(rect, product.image ?? null);
     setJustAdded(true);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => setJustAdded(false), 1500);
@@ -52,6 +55,7 @@ export default function AddToQuoteButton({
 
   return (
     <button
+      ref={buttonRef}
       type="button"
       onClick={handleClick}
       className={`relative z-20 inline-flex w-full items-center justify-center border transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${baseClass} ${stateClass} ${className}`}

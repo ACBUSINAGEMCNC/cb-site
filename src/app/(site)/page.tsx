@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import HeroShowcase from "@/components/HeroShowcase";
 import MachineCard from "@/components/MachineCard";
 import ProductCard from "@/components/ProductCard";
 import SectionTitle from "@/components/SectionTitle";
@@ -88,8 +89,10 @@ export default async function HomePage() {
             </h1>
             <div className="hazard-stripe mt-6 w-24" aria-hidden="true" />
             <p className="mt-6 max-w-xl text-sm leading-7 text-muted sm:text-base">
-              Peças similares e compatíveis para máquinas agrícolas, produzidas com
-              usinagem CNC, controle dimensional e atendimento direto da equipe.
+              Peças similares e compatíveis para colheitadeira, plantadeira e
+              pulverizador John Deere. Monte seu orçamento: adicione as peças e
+              envie a lista pelo WhatsApp — a equipe responde com disponibilidade
+              e valores.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -110,57 +113,7 @@ export default async function HomePage() {
             <p className="mt-5 font-mono text-xs text-muted">{SITE.city}</p>
           </div>
 
-          <div className="relative mx-auto aspect-[1.05] w-full max-w-[580px]">
-            <div
-              aria-hidden="true"
-              className="absolute inset-[14%] rounded-full bg-accent/10 blur-3xl"
-            />
-            <div className="absolute left-[2%] top-[9%] h-[60%] w-[59%] border border-line bg-surface/70 p-2 shadow-2xl shadow-black/40 sm:p-4">
-              <div className="product-stage relative h-full w-full">
-                <Image
-                  src="/catalog/colheitadeira/de20100.png"
-                  alt="Caixa do elevador para colheitadeira"
-                  fill
-                  priority
-                  sizes="(max-width: 767px) 55vw, 30vw"
-                  className="object-contain p-3 drop-shadow-2xl"
-                />
-              </div>
-              <span className="absolute bottom-3 left-3 border border-line bg-bg/90 px-2 py-1 font-mono text-[10px] text-steel sm:bottom-5 sm:left-5">
-                DE20100
-              </span>
-            </div>
-            <div className="absolute right-[1%] top-[5%] h-[42%] w-[38%] border border-line bg-surface/80 p-2 shadow-xl shadow-black/30 sm:p-3">
-              <div className="product-stage relative h-full w-full">
-                <Image
-                  src="/catalog/colheitadeira/de21086.png"
-                  alt="Caixa de acionamento da navalha para colheitadeira"
-                  fill
-                  priority
-                  sizes="(max-width: 767px) 36vw, 22vw"
-                  className="object-contain p-3 drop-shadow-2xl"
-                />
-              </div>
-              <span className="absolute bottom-2 left-2 border border-line bg-bg/90 px-2 py-1 font-mono text-[9px] text-steel sm:bottom-3 sm:left-3 sm:text-[10px]">
-                DE21086
-              </span>
-            </div>
-            <div className="absolute bottom-[2%] right-[7%] h-[50%] w-[53%] border border-line bg-surface/90 p-2 shadow-2xl shadow-black/50 sm:p-4">
-              <div className="product-stage relative h-full w-full">
-                <Image
-                  src="/catalog/pulverizador/an207684.png"
-                  alt="Barra da suspensão para pulverizador"
-                  fill
-                  priority
-                  sizes="(max-width: 767px) 50vw, 28vw"
-                  className="object-contain p-3 drop-shadow-2xl"
-                />
-              </div>
-              <span className="absolute bottom-2 left-2 border border-line bg-bg/90 px-2 py-1 font-mono text-[9px] text-steel sm:bottom-4 sm:left-4 sm:text-[10px]">
-                AN207684
-              </span>
-            </div>
-          </div>
+          <HeroShowcase />
         </div>
       </section>
 
@@ -240,9 +193,9 @@ export default async function HomePage() {
         />
         <ol className="mt-8 grid gap-4 md:grid-cols-3">
           {[
-            ["01", "Encontre a peça", "Busque pelo código ou pelo nome no catálogo."],
-            ["02", "Solicite orçamento", "Envie sua necessidade para nossa equipe."],
-            ["03", "Receba retorno", "Respondemos pelo WhatsApp e enviamos para todo o Brasil."],
+            ["01", "Encontre a peça", "Busque pelo código ou nome no catálogo."],
+            ["02", "Monte o orçamento", "Clique em 'Adicionar ao orçamento' em cada peça, como um carrinho."],
+            ["03", "Envie e receba", "Finalize e mande a lista pelo WhatsApp; respondemos rápido e enviamos para todo o Brasil."],
           ].map(([number, title, description]) => (
             <li key={number} className="border border-line bg-surface p-5 sm:p-6">
               <span className="font-mono text-sm text-accent">{number}</span>
@@ -299,10 +252,11 @@ export default async function HomePage() {
               Atendimento direto
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold uppercase text-fg sm:text-4xl">
-              Precisa de uma peça específica?
+              Encontrou suas peças?
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-muted">
-              Envie o código, desenho ou amostra para conversar com nossa equipe.
+              Monte o orçamento pelo site ou fale direto no WhatsApp — também
+              fabricamos sob desenho ou amostra.
             </p>
           </div>
           <Link

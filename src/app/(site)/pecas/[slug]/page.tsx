@@ -160,6 +160,10 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 }}
               />
             </div>
+            <p className="mt-3 text-center text-xs leading-5 text-muted">
+              Adicione quantas peças quiser e envie o orçamento de uma vez pelo
+              WhatsApp.
+            </p>
             <Link
               href={quoteLink}
               target="_blank"

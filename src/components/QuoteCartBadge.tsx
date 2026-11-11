@@ -8,6 +8,7 @@ export default function QuoteCartBadge() {
 
   return (
     <Link
+      id="quote-cart-icon"
       href="/orcamento"
       aria-label="Ver orçamento"
       className="relative grid h-11 w-11 place-items-center border border-line text-steel transition-colors hover:border-accent/50 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
