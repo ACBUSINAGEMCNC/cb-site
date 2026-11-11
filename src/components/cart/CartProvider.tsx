@@ -35,7 +35,7 @@ type QuoteCartContextValue = {
   clear: () => void;
   count: number;
   hydrated: boolean;
-  flyToCart: (sourceRect: DOMRect, imageUrl?: string | null) => void;
+  flyToCart: (sourceRect: DOMRect) => void;
 };
 
 const STORAGE_KEY = "acb-orcamento";
@@ -184,105 +184,89 @@ export function QuoteCartProvider({ children }: { children: React.ReactNode }) {
 
   const clear = useCallback(() => writeItems([]), []);
 
-  const flyToCart = useCallback(
-    (sourceRect: DOMRect, imageUrl?: string | null) => {
-      if (typeof document === "undefined") return;
+  const flyToCart = useCallback((sourceRect: DOMRect) => {
+    if (typeof document === "undefined") return;
 
-      // O badge existe duas vezes no header (desktop e mobile) — usa o visível.
-      const icons = Array.from(
-        document.querySelectorAll<HTMLElement>("#quote-cart-icon")
+    // O badge existe duas vezes no header (desktop e mobile) — usa o visível.
+    const icons = Array.from(
+      document.querySelectorAll<HTMLElement>("#quote-cart-icon")
+    );
+    const icon =
+      icons.find((element) => {
+        const rect = element.getBoundingClientRect();
+        return rect.width > 0 && rect.height > 0;
+      }) ?? icons[0];
+    if (!icon) return;
+    const targetRect = icon.getBoundingClientRect();
+    if (targetRect.width === 0 || targetRect.height === 0) return;
+
+    const bumpIcon = () => {
+      icon.classList.remove("quote-cart-bump");
+      void icon.offsetWidth; // reinicia a animação
+      icon.classList.add("quote-cart-bump");
+      window.setTimeout(
+        () => icon.classList.remove("quote-cart-bump"),
+        450
       );
-      const icon =
-        icons.find((element) => {
-          const rect = element.getBoundingClientRect();
-          return rect.width > 0 && rect.height > 0;
-        }) ?? icons[0];
-      if (!icon) return;
-      const targetRect = icon.getBoundingClientRect();
-      if (targetRect.width === 0 || targetRect.height === 0) return;
+    };
 
-      const bumpIcon = () => {
-        icon.classList.remove("quote-cart-bump");
-        void icon.offsetWidth; // reinicia a animação
-        icon.classList.add("quote-cart-bump");
-        window.setTimeout(
-          () => icon.classList.remove("quote-cart-bump"),
-          450
-        );
-      };
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      bumpIcon();
+      return;
+    }
 
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const size = 64;
+    const startX = sourceRect.left + sourceRect.width / 2 - size / 2;
+    const startY = sourceRect.top + sourceRect.height / 2 - size / 2;
+    const endX = targetRect.left + targetRect.width / 2 - size / 2;
+    const endY = targetRect.top + targetRect.height / 2 - size / 2;
+    const dx = endX - startX;
+    const dy = endY - startY;
+    const distance = Math.hypot(dx, dy);
+    const lift = Math.min(distance * 0.22, 180);
+    const spin = dx >= 0 ? 1 : -1;
+
+    const tractor = document.createElement("div");
+    tractor.textContent = "🚜";
+    tractor.setAttribute("aria-hidden", "true");
+    tractor.className = "fly-to-cart-tractor";
+    tractor.style.left = `${startX}px`;
+    tractor.style.top = `${startY}px`;
+    document.body.appendChild(tractor);
+
+    const animation = tractor.animate(
+      [
+        {
+          transform: "translate3d(0, 0, 0) rotate(0deg) scale(1)",
+          opacity: 1,
+        },
+        {
+          transform: `translate3d(${dx * 0.5}px, ${dy * 0.5 - lift}px, 0) rotate(${-12 * spin}deg) scale(1)`,
+          opacity: 1,
+          offset: 0.5,
+        },
+        {
+          transform: `translate3d(${dx * 0.88}px, ${dy * 0.88}px, 0) rotate(${6 * spin}deg) scale(1.6)`,
+          opacity: 1,
+          offset: 0.85,
+        },
+        {
+          transform: `translate3d(${dx}px, ${dy}px, 0) rotate(0deg) scale(0.3)`,
+          opacity: 0,
+        },
+      ],
+      { duration: 750, easing: "ease-in-out", fill: "forwards" }
+    );
+
+    animation.finished
+      .then(() => {
+        tractor.remove();
         bumpIcon();
-        return;
-      }
-
-      const size = 64;
-      const startX = sourceRect.left + sourceRect.width / 2 - size / 2;
-      const startY = sourceRect.top + sourceRect.height / 2 - size / 2;
-      const endX = targetRect.left + targetRect.width / 2 - size / 2;
-      const endY = targetRect.top + targetRect.height / 2 - size / 2;
-      const dx = endX - startX;
-      const dy = endY - startY;
-      const distance = Math.hypot(dx, dy);
-      const lift = Math.min(distance * 0.15, 140);
-      const spin = dx >= 0 ? 1 : -1;
-
-      const ghost = imageUrl
-        ? document.createElement("img")
-        : document.createElement("div");
-      if (ghost instanceof HTMLImageElement && imageUrl) {
-        ghost.src = imageUrl;
-        ghost.alt = "";
-      }
-      ghost.setAttribute("aria-hidden", "true");
-      Object.assign(ghost.style, {
-        position: "fixed",
-        left: `${startX}px`,
-        top: `${startY}px`,
-        width: `${size}px`,
-        height: `${size}px`,
-        objectFit: "contain",
-        padding: "6px",
-        border: "1px solid rgba(255, 255, 255, 0.16)",
-        borderRadius: "4px",
-        background: imageUrl ? "#14171b" : "#f5b800",
-        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
-        zIndex: "9999",
-        pointerEvents: "none",
-        willChange: "transform, opacity",
+      })
+      .catch(() => {
+        tractor.remove();
       });
-      document.body.appendChild(ghost);
-
-      const animation = ghost.animate(
-        [
-          {
-            transform: "translate3d(0, 0, 0) rotate(0deg) scale(1)",
-            opacity: 1,
-          },
-          {
-            transform: `translate3d(${dx * 0.5}px, ${dy * 0.5 - lift}px, 0) rotate(${160 * spin}deg) scale(0.4)`,
-            opacity: 0.9,
-            offset: 0.55,
-          },
-          {
-            transform: `translate3d(${dx}px, ${dy}px, 0) rotate(${320 * spin}deg) scale(0.31)`,
-            opacity: 0,
-          },
-        ],
-        { duration: 650, easing: "ease-in-out", fill: "forwards" }
-      );
-
-      animation.finished
-        .then(() => {
-          ghost.remove();
-          bumpIcon();
-        })
-        .catch(() => {
-          ghost.remove();
-        });
-    },
-    []
-  );
+  }, []);
 
   const count = useMemo(
     () => items.reduce((total, item) => total + item.qty, 0),

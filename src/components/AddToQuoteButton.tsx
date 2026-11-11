@@ -30,7 +30,7 @@ export default function AddToQuoteButton({
   function handleClick() {
     addItem(product, 1);
     const rect = buttonRef.current?.getBoundingClientRect();
-    if (rect) flyToCart(rect, product.image ?? null);
+    if (rect) flyToCart(rect);
     setJustAdded(true);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => setJustAdded(false), 1500);

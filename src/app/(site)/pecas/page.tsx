@@ -36,57 +36,12 @@ function catalogHref({
   return search ? `/pecas?${search}` : "/pecas";
 }
 
-function FilterLinks({
-  categories,
-  selectedCategory,
-  query,
-  showCounts,
-}: {
-  categories: {
-    slug: string;
-    name: string;
-    _count: { products: number };
-  }[];
-  selectedCategory?: string;
-  query?: string;
-  showCounts: boolean;
-}) {
-  return (
-    <ul className="mt-3 space-y-1">
-      {categories.map((category) => (
-        <li key={category.slug}>
-          <Link
-            href={catalogHref({ query, category: category.slug })}
-            aria-current={selectedCategory === category.slug ? "page" : undefined}
-            className={`flex min-h-10 items-center justify-between px-3 text-sm transition-colors ${
-              selectedCategory === category.slug
-                ? "bg-surface-2 text-accent"
-                : "text-muted hover:bg-surface-2 hover:text-fg"
-            }`}
-          >
-            <span>{category.name}</span>
-            {showCounts ? (
-              <span className="font-mono text-xs">{category._count.products}</span>
-            ) : null}
-          </Link>
-        </li>
-      ))}
-      <li className="border-t border-line pt-1">
-        <Link
-          href={catalogHref({ query })}
-          aria-current={!selectedCategory ? "page" : undefined}
-          className={`flex min-h-10 items-center justify-between px-3 text-sm transition-colors ${
-            !selectedCategory
-              ? "bg-surface-2 text-accent"
-              : "text-muted hover:bg-surface-2 hover:text-fg"
-          }`}
-        >
-          Todas
-          {showCounts ? <span className="font-mono text-xs">{categories.reduce((n, c) => n + c._count.products, 0)}</span> : null}
-        </Link>
-      </li>
-    </ul>
-  );
+function categoryPillClass(active: boolean) {
+  return `inline-flex min-h-9 items-center gap-1.5 border px-3 text-xs whitespace-nowrap transition-colors ${
+    active
+      ? "border-accent/60 bg-accent/15 text-accent"
+      : "border-line text-muted hover:border-accent/50 hover:text-fg"
+  }`;
 }
 
 export default async function PecasPage({
@@ -148,95 +103,76 @@ export default async function PecasPage({
         description="Busque por código, nome ou aplicação e encontre a linha de máquina."
       />
 
-      <div className="mt-8 border border-line bg-surface p-4 lg:hidden">
-        <form action="/pecas" method="get" role="search" className="flex gap-2">
+      <div className="mt-8 flex flex-wrap items-center gap-2 border border-line bg-surface p-3">
+        <form
+          action="/pecas"
+          method="get"
+          role="search"
+          className="flex min-w-[240px] flex-1 items-center gap-2"
+        >
           {selectedCategory ? (
             <input type="hidden" name="categoria" value={selectedCategory} />
           ) : null}
-          <label htmlFor="catalog-search-mobile" className="sr-only">
+          <label htmlFor="catalog-search" className="sr-only">
             Buscar peças
           </label>
           <input
-            id="catalog-search-mobile"
+            id="catalog-search"
             name="q"
             type="search"
             defaultValue={query ?? ""}
-            placeholder="Buscar por código ou nome"
-            className="min-h-11 min-w-0 flex-1 border border-line bg-bg px-3 text-sm text-fg outline-none placeholder:text-muted focus:border-accent"
+            placeholder="Buscar por código, nome ou aplicação"
+            className="min-h-10 min-w-0 flex-1 border border-line bg-bg px-3 text-sm text-fg outline-none placeholder:text-muted focus:border-accent"
           />
           <button
             type="submit"
-            className="min-h-11 bg-accent px-4 text-sm font-bold text-accent-fg"
+            className="min-h-10 shrink-0 bg-accent px-4 text-sm font-bold text-accent-fg"
           >
             Buscar
           </button>
         </form>
-        <details className="mt-3 border-t border-line pt-3">
-          <summary className="cursor-pointer text-sm text-steel">Filtrar por máquina</summary>
-          <FilterLinks
-            categories={categories}
-            selectedCategory={selectedCategory}
-            query={query}
-            showCounts
-          />
-        </details>
-        <Link
-          href="/pecas"
-          className="mt-3 inline-flex text-xs text-muted underline decoration-line underline-offset-4 hover:text-accent"
-        >
-          Limpar filtros
-        </Link>
-      </div>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[240px_1fr]">
-        <aside className="hidden lg:block">
-          <div className="sticky top-32 border border-line bg-surface p-4">
-            <h2 className="font-mono text-xs uppercase tracking-[0.16em] text-accent">
-              Filtrar catálogo
-            </h2>
-            <form action="/pecas" method="get" role="search" className="mt-4">
-              {selectedCategory ? (
-                <input type="hidden" name="categoria" value={selectedCategory} />
-              ) : null}
-              <label htmlFor="catalog-search" className="text-xs text-muted">
-                Busca
-              </label>
-              <input
-                id="catalog-search"
-                name="q"
-                type="search"
-                defaultValue={query ?? ""}
-                placeholder="Código ou nome"
-                className="mt-2 min-h-11 w-full border border-line bg-bg px-3 text-sm text-fg outline-none placeholder:text-muted focus:border-accent"
-              />
-              <button
-                type="submit"
-                className="mt-2 min-h-10 w-full border border-line text-xs font-semibold text-steel transition-colors hover:border-accent/50 hover:text-accent"
-              >
-                Buscar
-              </button>
-            </form>
-            <div className="mt-5 border-t border-line pt-4">
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-steel">
-                Máquinas
-              </h3>
-              <FilterLinks
-                categories={categories}
-                selectedCategory={selectedCategory}
-                query={query}
-                showCounts
-              />
-            </div>
+        <nav
+          aria-label="Filtrar por máquina"
+          className="flex flex-wrap items-center gap-1.5"
+        >
+          <Link
+            href={catalogHref({ query })}
+            aria-current={!selectedCategory ? "page" : undefined}
+            className={categoryPillClass(!selectedCategory)}
+          >
+            Todas
+            <span className="font-mono text-[10px] opacity-80">
+              {categories.reduce((n, c) => n + c._count.products, 0)}
+            </span>
+          </Link>
+          {categories.map((category) => (
+            <Link
+              key={category.slug}
+              href={catalogHref({ query, category: category.slug })}
+              aria-current={
+                selectedCategory === category.slug ? "page" : undefined
+              }
+              className={categoryPillClass(selectedCategory === category.slug)}
+            >
+              {category.name}
+              <span className="font-mono text-[10px] opacity-80">
+                {category._count.products}
+              </span>
+            </Link>
+          ))}
+          {query || selectedCategory ? (
             <Link
               href="/pecas"
-              className="mt-4 inline-flex text-xs text-muted underline decoration-line underline-offset-4 hover:text-accent"
+              className="inline-flex min-h-9 items-center px-2 text-xs text-muted underline decoration-line underline-offset-4 transition-colors hover:text-accent"
             >
-              Limpar filtros
+              Limpar
             </Link>
-          </div>
-        </aside>
+          ) : null}
+        </nav>
+      </div>
 
-        <section aria-labelledby="catalog-results-heading">
+      <section aria-labelledby="catalog-results-heading" className="mt-8">
           <div className="flex flex-wrap items-end justify-between gap-3 border-b border-line pb-4">
             <div>
               <h2
@@ -288,7 +224,7 @@ export default async function PecasPage({
           </div>
 
           {products.length > 0 ? (
-            <div className="mt-5 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 xl:grid-cols-4">
+            <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 2xl:grid-cols-5">
               {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -355,8 +291,7 @@ export default async function PecasPage({
               )}
             </nav>
           ) : null}
-        </section>
-      </div>
+      </section>
     </main>
   );
 }

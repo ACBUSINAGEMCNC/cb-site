@@ -195,6 +195,30 @@ export default function QuoteCartClient() {
                 Limpar orçamento
               </button>
             </div>
+
+            <Link
+              href={whatsappLink(
+                `Olá! Vim pelo site e tenho interesse nesses itens:\n${items
+                  .map((item) => `• ${item.code} — ${item.name} (x${item.qty})`)
+                  .join("\n")}`
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 bg-green px-5 text-sm font-bold text-white transition-colors hover:bg-green/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="h-5 w-5 fill-current"
+              >
+                <path d="M12.04 2a9.9 9.9 0 0 0-8.57 14.86L2 22l5.3-1.39A9.95 9.95 0 1 0 12.04 2Zm0 18.13a8.14 8.14 0 0 1-4.16-1.14l-.3-.18-3.12.82.83-3.05-.19-.31a8.18 8.18 0 1 1 6.94 3.86Zm4.48-6.1c-.25-.13-1.45-.72-1.67-.8-.22-.09-.39-.13-.55.12-.17.25-.63.8-.77.96-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.13-.55-1.32-.75-1.8-.2-.48-.4-.42-.55-.42-.14-.01-.31-.01-.47-.01-.17 0-.43.06-.65.31-.23.25-.86.84-.86 2.05 0 1.2.88 2.37 1 2.53.12.17 1.72 2.63 4.17 3.69.58.25 1.04.4 1.4.51.59.19 1.12.16 1.54.1.47-.07 1.45-.59 1.65-1.17.2-.57.2-1.06.14-1.17-.06-.1-.23-.17-.48-.3Z" />
+              </svg>
+              Enviar lista direto no WhatsApp
+            </Link>
+            <p className="mt-2 text-center text-xs text-muted">
+              Abre o WhatsApp com a lista de peças pronta para enviar — sem
+              precisar preencher o formulário.
+            </p>
           </section>
 
           <form
