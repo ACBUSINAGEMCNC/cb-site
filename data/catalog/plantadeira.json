@@ -1,0 +1,589 @@
+{
+  "machine": "plantadeira",
+  "source": "Catálogo de Peças John Deere (PLANTADEIRA).pdf",
+  "items": [
+    {
+      "code": "AX10557",
+      "name": "Eixo do Balancim",
+      "models": "",
+      "page": 2,
+      "slug": "ax10557",
+      "images": [
+        "/catalog/plantadeira/ax10557.png"
+      ]
+    },
+    {
+      "code": "CQ57437",
+      "name": "ESPACADOR RODA COBRIDORA",
+      "models": "",
+      "page": 2,
+      "slug": "cq57437",
+      "images": [
+        "/catalog/plantadeira/cq57437.png"
+      ]
+    },
+    {
+      "code": "AX10056",
+      "name": "ENGR. DUPLA Z36 Z24 ASA 40",
+      "models": "",
+      "page": 2,
+      "slug": "ax10056",
+      "images": [
+        "/catalog/plantadeira/ax10056.png"
+      ]
+    },
+    {
+      "code": "KK57455",
+      "name": "BUCHA SUPORTE DISCO",
+      "models": "",
+      "page": 2,
+      "slug": "kk57455",
+      "images": [
+        "/catalog/plantadeira/kk57455.png"
+      ]
+    },
+    {
+      "code": "CQ76563",
+      "name": "Bucha Flangeada",
+      "models": "",
+      "page": 2,
+      "slug": "cq76563",
+      "images": [
+        "/catalog/plantadeira/cq76563.png"
+      ]
+    },
+    {
+      "code": "CQ16817",
+      "name": "BUCHA BRACOS PARALELOS DB",
+      "models": "",
+      "page": 2,
+      "slug": "cq16817",
+      "images": [
+        "/catalog/plantadeira/cq16817.png"
+      ]
+    },
+    {
+      "code": "CQ27934-KK41065",
+      "name": "Eixo",
+      "models": "",
+      "page": 2,
+      "slug": "cq27934-kk41065",
+      "images": [
+        "/catalog/plantadeira/cq27934-kk41065.png"
+      ]
+    },
+    {
+      "code": "CQ27935",
+      "name": "Eixo",
+      "models": "",
+      "page": 2,
+      "slug": "cq27935",
+      "images": [
+        "/catalog/plantadeira/cq27935.png"
+      ]
+    },
+    {
+      "code": "CQ20824",
+      "name": "PINO SULCADOR ADUBO",
+      "models": "",
+      "page": 2,
+      "slug": "cq20824",
+      "images": [
+        "/catalog/plantadeira/cq20824.png"
+      ]
+    },
+    {
+      "code": "CQ29852",
+      "name": "Eixo",
+      "models": "",
+      "page": 3,
+      "slug": "cq29852",
+      "images": [
+        "/catalog/plantadeira/cq29852.png"
+      ]
+    },
+    {
+      "code": "CQ29853-KK41023",
+      "name": "Eixo",
+      "models": "",
+      "page": 3,
+      "slug": "cq29853-kk41023",
+      "images": [
+        "/catalog/plantadeira/cq29853-kk41023.png"
+      ]
+    },
+    {
+      "code": "CQ48795",
+      "name": "EIXO DIR.",
+      "models": "",
+      "page": 3,
+      "slug": "cq48795",
+      "images": [
+        "/catalog/plantadeira/cq48795.png"
+      ]
+    },
+    {
+      "code": "CQ54027",
+      "name": "Eixo Esquerdo da Roda Cobridora",
+      "models": "",
+      "page": 3,
+      "slug": "cq54027",
+      "images": [
+        "/catalog/plantadeira/cq54027.png"
+      ]
+    },
+    {
+      "code": "CQ48794",
+      "name": "EIXO ESQ.",
+      "models": "",
+      "page": 3,
+      "slug": "cq48794",
+      "images": [
+        "/catalog/plantadeira/cq48794.png"
+      ]
+    },
+    {
+      "code": "KK41024",
+      "name": "Eixo do Lado Esquerdo",
+      "models": "",
+      "page": 3,
+      "slug": "kk41024",
+      "images": [
+        "/catalog/plantadeira/kk41024.png"
+      ]
+    },
+    {
+      "code": "CQ29079",
+      "name": "EIXO ESQUERDO DB",
+      "models": "",
+      "page": 3,
+      "slug": "cq29079",
+      "images": [
+        "/catalog/plantadeira/cq29079.png"
+      ]
+    },
+    {
+      "code": "CQ29078",
+      "name": "EIXO ESQUERDO DB",
+      "models": "",
+      "page": 3,
+      "slug": "cq29078",
+      "images": [
+        "/catalog/plantadeira/cq29078.png"
+      ]
+    },
+    {
+      "code": "CQ54028",
+      "name": "Eixo Direito da Roda Cobridora",
+      "models": "",
+      "page": 3,
+      "slug": "cq54028",
+      "images": [
+        "/catalog/plantadeira/cq54028.png"
+      ]
+    },
+    {
+      "code": "KK62139",
+      "name": "Eixo da Lâmina, Lado Direito",
+      "models": "",
+      "page": 4,
+      "slug": "kk62139",
+      "images": [
+        "/catalog/plantadeira/kk62139.png"
+      ]
+    },
+    {
+      "code": "KK62140",
+      "name": "Eixo da Lâmina, Lado Esquerdo",
+      "models": "",
+      "page": 4,
+      "slug": "kk62140",
+      "images": [
+        "/catalog/plantadeira/kk62140.png",
+        "/catalog/plantadeira/kk62140-2.png"
+      ]
+    },
+    {
+      "code": "KK70860",
+      "name": "Pivô, Lado Esquerdo",
+      "models": "",
+      "page": 4,
+      "slug": "kk70860",
+      "images": [
+        "/catalog/plantadeira/kk70860.png"
+      ]
+    },
+    {
+      "code": "KK70836",
+      "name": "Pivô, Lado direito",
+      "models": "",
+      "page": 4,
+      "slug": "kk70836",
+      "images": [
+        "/catalog/plantadeira/kk70836.png",
+        "/catalog/plantadeira/kk70836-2.png"
+      ]
+    },
+    {
+      "code": "A80688",
+      "name": "Pino Flange Rolamento para Plantadeira",
+      "models": "",
+      "page": 4,
+      "slug": "a80688",
+      "images": [
+        "/catalog/plantadeira/a80688.png"
+      ]
+    },
+    {
+      "code": "CQ59363",
+      "name": "PINO BRACOS PARALELOS DB.",
+      "models": "",
+      "page": 4,
+      "slug": "cq59363",
+      "images": [
+        "/catalog/plantadeira/cq59363.png"
+      ]
+    },
+    {
+      "code": "CQ54994",
+      "name": "Fixador do Pino Ranhurado",
+      "models": "",
+      "page": 4,
+      "slug": "cq54994",
+      "images": [
+        "/catalog/plantadeira/cq54994.png"
+      ]
+    },
+    {
+      "code": "CQ33462",
+      "name": "EIXO SULCADOR ADUBO",
+      "models": "",
+      "page": 5,
+      "slug": "cq33462",
+      "images": [
+        "/catalog/plantadeira/cq33462.png"
+      ]
+    },
+    {
+      "code": "CQ54229",
+      "name": "Pino Fixador Plantadeira",
+      "models": "",
+      "page": 5,
+      "slug": "cq54229",
+      "images": [
+        "/catalog/plantadeira/cq54229.png"
+      ]
+    },
+    {
+      "code": "KK19436",
+      "name": "EIXO HASTE TRASEIRA LONGA",
+      "models": "",
+      "page": 5,
+      "slug": "kk19436",
+      "images": [
+        "/catalog/plantadeira/kk19436.png"
+      ]
+    },
+    {
+      "code": "CQ67400",
+      "name": "EIXO CALIBRADOR DE PROFUNDIDADE",
+      "models": "",
+      "page": 5,
+      "slug": "cq67400",
+      "images": [
+        "/catalog/plantadeira/cq67400.png"
+      ]
+    },
+    {
+      "code": "AX10611",
+      "name": "EIXO RODA CALIBRADORA",
+      "models": "",
+      "page": 5,
+      "slug": "ax10611",
+      "images": [
+        "/catalog/plantadeira/ax10611.png"
+      ]
+    },
+    {
+      "code": "CQ69723",
+      "name": "EIXO DA RODA COBRIDORA DB",
+      "models": "",
+      "page": 5,
+      "slug": "cq69723",
+      "images": [
+        "/catalog/plantadeira/cq69723.png"
+      ]
+    },
+    {
+      "code": "CQ51868",
+      "name": "BUCHA ESPAÇADORA DISCO DE CORTE",
+      "models": "",
+      "page": 5,
+      "slug": "cq51868",
+      "images": [
+        "/catalog/plantadeira/cq51868.png"
+      ]
+    },
+    {
+      "code": "CQ76628",
+      "name": "BUCHA DO BRACO RODA CALIBRADORA",
+      "models": "",
+      "page": 5,
+      "slug": "cq76628",
+      "images": [
+        "/catalog/plantadeira/cq76628.png"
+      ]
+    },
+    {
+      "code": "CQ51867",
+      "name": "BUCHA DISCO DE CORTE",
+      "models": "",
+      "page": 5,
+      "slug": "cq51867",
+      "images": [
+        "/catalog/plantadeira/cq51867.png"
+      ]
+    },
+    {
+      "code": "CQ50306",
+      "name": "Eixo Roda da Transmissão",
+      "models": "",
+      "page": 6,
+      "slug": "cq50306",
+      "images": [
+        "/catalog/plantadeira/cq50306.png"
+      ]
+    },
+    {
+      "code": "CQ49817",
+      "name": "Eixo Roda da Transmissão",
+      "models": "",
+      "page": 6,
+      "slug": "cq49817",
+      "images": [
+        "/catalog/plantadeira/cq49817.png"
+      ]
+    },
+    {
+      "code": "DQ74827",
+      "name": "EIXO RODA CALIBRADORA DE PROFUNDIDADE",
+      "models": "",
+      "page": 6,
+      "slug": "dq74827",
+      "images": [
+        "/catalog/plantadeira/dq74827.png"
+      ]
+    },
+    {
+      "code": "CQ69513",
+      "name": "EIXO RODA DUPLA PLANTADEIRA",
+      "models": "",
+      "page": 6,
+      "slug": "cq69513",
+      "images": [
+        "/catalog/plantadeira/cq69513.png"
+      ]
+    },
+    {
+      "code": "CQ62069",
+      "name": "BUCHA EIXO INTERMEDIARIO",
+      "models": "",
+      "page": 6,
+      "slug": "cq62069",
+      "images": [
+        "/catalog/plantadeira/cq62069.png"
+      ]
+    },
+    {
+      "code": "DQ74873",
+      "name": "Eixo Revestido distribuidor de Fertilizante",
+      "models": "",
+      "page": 6,
+      "slug": "dq74873",
+      "images": [
+        "/catalog/plantadeira/dq74873.png"
+      ]
+    },
+    {
+      "code": "KK51114",
+      "name": "BUCHA BRACO SUPORTE",
+      "models": "",
+      "page": 6,
+      "slug": "kk51114",
+      "images": [
+        "/catalog/plantadeira/kk51114.png"
+      ]
+    },
+    {
+      "code": "KK60527",
+      "name": "PINO SUPORTE DISCO SULCADOR DB EXACTEMERGE",
+      "models": "",
+      "page": 7,
+      "slug": "kk60527",
+      "images": [
+        "/catalog/plantadeira/kk60527.png"
+      ]
+    },
+    {
+      "code": "CQ75244",
+      "name": "Eixo do Cubo do Disco de Corte",
+      "models": "",
+      "page": 7,
+      "slug": "cq75244",
+      "images": [
+        "/catalog/plantadeira/cq75244.png"
+      ]
+    },
+    {
+      "code": "CQ33468",
+      "name": "EIXO SULCADOR DO ADUBO",
+      "models": "",
+      "page": 7,
+      "slug": "cq33468",
+      "images": [
+        "/catalog/plantadeira/cq33468.png"
+      ]
+    },
+    {
+      "code": "CQ48536",
+      "name": "PINO DISCO DE CORTE",
+      "models": "",
+      "page": 7,
+      "slug": "cq48536",
+      "images": [
+        "/catalog/plantadeira/cq48536.png"
+      ]
+    },
+    {
+      "code": "KK29343",
+      "name": "BUCHA AUTO COMPENSADORA",
+      "models": "",
+      "page": 7,
+      "slug": "kk29343",
+      "images": [
+        "/catalog/plantadeira/kk29343.png"
+      ]
+    },
+    {
+      "code": "KK43540",
+      "name": "BUCHA DO BRACO SULCADOR",
+      "models": "",
+      "page": 7,
+      "slug": "kk43540",
+      "images": [
+        "/catalog/plantadeira/kk43540.png"
+      ]
+    },
+    {
+      "code": "KK57452",
+      "name": "Pino Perfurado",
+      "models": "",
+      "page": 7,
+      "slug": "kk57452",
+      "images": [
+        "/catalog/plantadeira/kk57452.png"
+      ]
+    },
+    {
+      "code": "CQ20072",
+      "name": "PORCA EIXO DISCO DE CORTE",
+      "models": "",
+      "page": 7,
+      "slug": "cq20072",
+      "images": [
+        "/catalog/plantadeira/cq20072.png"
+      ]
+    },
+    {
+      "code": "KK47559",
+      "name": "PINO FIXADOR DB",
+      "models": "",
+      "page": 7,
+      "slug": "kk47559",
+      "images": [
+        "/catalog/plantadeira/kk47559.png"
+      ]
+    },
+    {
+      "code": "CQ50449",
+      "name": "ESPACADOR",
+      "models": "",
+      "page": 8,
+      "slug": "cq50449",
+      "images": [
+        "/catalog/plantadeira/cq50449.png"
+      ]
+    },
+    {
+      "code": "CQ62049",
+      "name": "BUCHA ACIONAMENTO EIXO DA CATRACA SEX 7 8 DB",
+      "models": "",
+      "page": 8,
+      "slug": "cq62049",
+      "images": [
+        "/catalog/plantadeira/cq62049.png"
+      ]
+    },
+    {
+      "code": "CQ67433",
+      "name": "PORCA DO EIXO DA RODA SIMPLES E DA RODA DUPLA",
+      "models": "",
+      "page": 8,
+      "slug": "cq67433",
+      "images": [
+        "/catalog/plantadeira/cq67433.png"
+      ]
+    },
+    {
+      "code": "CQ49397",
+      "name": "Parafuso Olhal, M20 X 388",
+      "models": "",
+      "page": 8,
+      "slug": "cq49397",
+      "images": [
+        "/catalog/plantadeira/cq49397.png"
+      ]
+    },
+    {
+      "code": "CQ40748",
+      "name": "BUCHA SX BRACOS PARALELOS DB",
+      "models": "",
+      "page": 8,
+      "slug": "cq40748",
+      "images": [
+        "/catalog/plantadeira/cq40748.png"
+      ]
+    },
+    {
+      "code": "KK41079",
+      "name": "Cubo Do Disco",
+      "models": "",
+      "page": 8,
+      "slug": "kk41079",
+      "images": [
+        "/catalog/plantadeira/kk41079.png"
+      ]
+    },
+    {
+      "code": "KK49622",
+      "name": "CUBO RODA COBRIDORA",
+      "models": "",
+      "page": 8,
+      "slug": "kk49622",
+      "images": [
+        "/catalog/plantadeira/kk49622.png"
+      ]
+    },
+    {
+      "code": "CQ51019",
+      "name": "EIXO DISCO CORTE",
+      "models": "",
+      "page": 8,
+      "slug": "cq51019",
+      "images": [
+        "/catalog/plantadeira/cq51019.png"
+      ]
+    }
+  ],
+  "warnings": []
+}

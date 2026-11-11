@@ -1,0 +1,769 @@
+{
+  "machine": "colheitadeira",
+  "source": "Catálogo de Peças John Deere (Colheitadeira).pdf",
+  "items": [
+    {
+      "code": "DE20100",
+      "name": "CAIXA DO ELEVADOR",
+      "models": "9470 STS / 9570 STS / 9670 STS / 9770 STS S540 / S550 / S660 / S670 / S680 / S690",
+      "page": 2,
+      "slug": "de20100",
+      "images": [
+        "/catalog/colheitadeira/de20100.png"
+      ]
+    },
+    {
+      "code": "H135287",
+      "name": "ENGRENAGEM DO ELEVADOR DE GRÃOS",
+      "models": "",
+      "page": 2,
+      "slug": "h135287",
+      "images": [
+        "/catalog/colheitadeira/h135287.png"
+      ]
+    },
+    {
+      "code": "CE18015",
+      "name": "CARCAÇA DO ELEVADOR",
+      "models": "",
+      "page": 2,
+      "slug": "ce18015",
+      "images": [
+        "/catalog/colheitadeira/ce18015.png"
+      ]
+    },
+    {
+      "code": "H135286",
+      "name": "ENGRENAGEM DO ELEVADOR DE GRÃOS",
+      "models": "",
+      "page": 2,
+      "slug": "h135286",
+      "images": [
+        "/catalog/colheitadeira/h135286.png"
+      ]
+    },
+    {
+      "code": "CE18445",
+      "name": "Eixo Superior Elevador de Grãos",
+      "models": "",
+      "page": 2,
+      "slug": "ce18445",
+      "images": [
+        "/catalog/colheitadeira/ce18445.png"
+      ]
+    },
+    {
+      "code": "H170967",
+      "name": "Eixo Superior Elevador de Grãos",
+      "models": "",
+      "page": 2,
+      "slug": "h170967",
+      "images": [
+        "/catalog/colheitadeira/h170967.png"
+      ]
+    },
+    {
+      "code": "DE21086",
+      "name": "Caixa de Acionamento da Navalha",
+      "models": "S540 625D/630D/635FD 640FD/645FD/730FD/ 735FD/740FD/745FD",
+      "page": 3,
+      "slug": "de21086",
+      "images": [
+        "/catalog/colheitadeira/de21086.png"
+      ]
+    },
+    {
+      "code": "DE21086-E",
+      "name": "EXÊNTRICO CX. NAVALHA DRAPER",
+      "models": "",
+      "page": 3,
+      "slug": "de21086-e",
+      "images": [
+        "/catalog/colheitadeira/de21086-e.png"
+      ]
+    },
+    {
+      "code": "DE21086-C",
+      "name": "Caixa de Acionamento da Navalha",
+      "models": "",
+      "page": 3,
+      "slug": "de21086-c",
+      "images": [
+        "/catalog/colheitadeira/de21086-c.png"
+      ]
+    },
+    {
+      "code": "DE30587",
+      "name": "ENGRENAGENS CX. NAVALHA DRAPER",
+      "models": "",
+      "page": 3,
+      "slug": "de30587",
+      "images": [
+        "/catalog/colheitadeira/de30587.png",
+        "/catalog/colheitadeira/de30587-2.png"
+      ]
+    },
+    {
+      "code": "CE19571",
+      "name": "SUPORTE CX. NAVALHA DRAPER",
+      "models": "",
+      "page": 4,
+      "slug": "ce19571",
+      "images": [
+        "/catalog/colheitadeira/ce19571.png"
+      ]
+    },
+    {
+      "code": "CE19565",
+      "name": "EIXO CX. NAVALHA DRAPER",
+      "models": "",
+      "page": 4,
+      "slug": "ce19565",
+      "images": [
+        "/catalog/colheitadeira/ce19565.png"
+      ]
+    },
+    {
+      "code": "CE19572",
+      "name": "COROA CX. NAVALHA DRAPER",
+      "models": "",
+      "page": 4,
+      "slug": "ce19572",
+      "images": [
+        "/catalog/colheitadeira/ce19572.png"
+      ]
+    },
+    {
+      "code": "CE19573",
+      "name": "TAMPA INF. CX. NAVALHA DRAPER",
+      "models": "",
+      "page": 4,
+      "slug": "ce19573",
+      "images": [
+        "/catalog/colheitadeira/ce19573.png"
+      ]
+    },
+    {
+      "code": "CE19586",
+      "name": "PORCA CX. NAVALHA DRAPER",
+      "models": "",
+      "page": 4,
+      "slug": "ce19586",
+      "images": [
+        "/catalog/colheitadeira/ce19586.png"
+      ]
+    },
+    {
+      "code": "CE18307",
+      "name": "ADP. VAL. ALÍVIO CX. NAVALHA DRAPER",
+      "models": "",
+      "page": 4,
+      "slug": "ce18307",
+      "images": [
+        "/catalog/colheitadeira/ce18307.png"
+      ]
+    },
+    {
+      "code": "CE21934",
+      "name": "ARRUELA CX. NAVALHA DRAPER",
+      "models": "",
+      "page": 4,
+      "slug": "ce21934",
+      "images": [
+        "/catalog/colheitadeira/ce21934.png",
+        "/catalog/colheitadeira/ce21934-2.png"
+      ]
+    },
+    {
+      "code": "CE19568",
+      "name": "TAMPA SUP. CX. NAVALHA DRAPER",
+      "models": "",
+      "page": 4,
+      "slug": "ce19568",
+      "images": [
+        "/catalog/colheitadeira/ce19568.png"
+      ]
+    },
+    {
+      "code": "AH231842",
+      "name": "Cabeça da Navalha",
+      "models": "",
+      "page": 5,
+      "slug": "ah231842",
+      "images": [
+        "/catalog/colheitadeira/ah231842.png",
+        "/catalog/colheitadeira/ah231842-2.png"
+      ]
+    },
+    {
+      "code": "AXE54467",
+      "name": "Ponta Rolete de Acionamento do Sistema de Flutuação",
+      "models": "",
+      "page": 5,
+      "slug": "axe54467",
+      "images": [
+        "/catalog/colheitadeira/axe54467.png",
+        "/catalog/colheitadeira/axe54467-2.png"
+      ]
+    },
+    {
+      "code": "CE21718",
+      "name": "Engrenagem Eixo 14D Plataforma Corte",
+      "models": "",
+      "page": 5,
+      "slug": "ce21718",
+      "images": [
+        "/catalog/colheitadeira/ce21718.png",
+        "/catalog/colheitadeira/ce21718-2.png"
+      ]
+    },
+    {
+      "code": "AE27909",
+      "name": "RODA DENTADA Z15 ASA 60 C ROLAMENTO",
+      "models": "",
+      "page": 5,
+      "slug": "ae27909",
+      "images": [
+        "/catalog/colheitadeira/ae27909.png",
+        "/catalog/colheitadeira/ae27909-2.png",
+        "/catalog/colheitadeira/ae27909-3.png"
+      ]
+    },
+    {
+      "code": "H173373",
+      "name": "Cubo da Transmissão do Separador de Grãos da Unidade de Colheita",
+      "models": "",
+      "page": 6,
+      "slug": "h173373",
+      "images": [
+        "/catalog/colheitadeira/h173373.png",
+        "/catalog/colheitadeira/h173373-2.png"
+      ]
+    },
+    {
+      "code": "H173375",
+      "name": "EIXO DA TRANSMISSÃO DA UNIDADE DE COLHEITA PARA COLHEDORAS DE CEREAIS",
+      "models": "",
+      "page": 6,
+      "slug": "h173375",
+      "images": [
+        "/catalog/colheitadeira/h173375.png"
+      ]
+    },
+    {
+      "code": "CE21493",
+      "name": "Eixo do rotor",
+      "models": "",
+      "page": 6,
+      "slug": "ce21493",
+      "images": [
+        "/catalog/colheitadeira/ce21493.png"
+      ]
+    },
+    {
+      "code": "CE20949",
+      "name": "Eixo do rotor",
+      "models": "",
+      "page": 6,
+      "slug": "ce20949",
+      "images": [
+        "/catalog/colheitadeira/ce20949.png"
+      ]
+    },
+    {
+      "code": "AH150405",
+      "name": "Acoplamento Estriado do Conjunto do Rotor",
+      "models": "",
+      "page": 6,
+      "slug": "ah150405",
+      "images": [
+        "/catalog/colheitadeira/ah150405.png"
+      ]
+    },
+    {
+      "code": "CE18212",
+      "name": "Eixo de Saída do Conjunto da Engrenagem Rotativa",
+      "models": "",
+      "page": 6,
+      "slug": "ce18212",
+      "images": [
+        "/catalog/colheitadeira/ce18212.png"
+      ]
+    },
+    {
+      "code": "AXE43319",
+      "name": "Conjunto da Engrenagem de Acionamento da Correia Central",
+      "models": "Série 600FD: 630FD, 635FD, 640FD e 645FD. Série 700FD: 730FD, 735FD, 740FD e 745FD",
+      "page": 7,
+      "slug": "axe43319",
+      "images": [
+        "/catalog/colheitadeira/axe43319.png",
+        "/catalog/colheitadeira/axe43319-2.png"
+      ]
+    },
+    {
+      "code": "DE19785",
+      "name": "CAIXO DE Engrenagem de Acionamento da Navalha",
+      "models": "",
+      "page": 8,
+      "slug": "de19785",
+      "images": [
+        "/catalog/colheitadeira/de19785.png",
+        "/catalog/colheitadeira/de19785-2.png"
+      ]
+    },
+    {
+      "code": "DE19785-C",
+      "name": "CORPO CAIXA",
+      "models": "",
+      "page": 8,
+      "slug": "de19785-c",
+      "images": [
+        "/catalog/colheitadeira/de19785-c.png"
+      ]
+    },
+    {
+      "code": "DE19785-E",
+      "name": "EXÊNTRICO CX.",
+      "models": "",
+      "page": 8,
+      "slug": "de19785-e",
+      "images": [
+        "/catalog/colheitadeira/de19785-e.png"
+      ]
+    },
+    {
+      "code": "DE19276",
+      "name": "Acionamento Da Coroa Comp. John Deere",
+      "models": "",
+      "page": 8,
+      "slug": "de19276",
+      "images": [
+        "/catalog/colheitadeira/de19276.png"
+      ]
+    },
+    {
+      "code": "CE19225",
+      "name": "Eixo de Saída do Conjunto da Engrenagem Rotativa",
+      "models": "",
+      "page": 8,
+      "slug": "ce19225",
+      "images": [
+        "/catalog/colheitadeira/ce19225.png"
+      ]
+    },
+    {
+      "code": "CE18643",
+      "name": "Eixo de Acionamento",
+      "models": "",
+      "page": 9,
+      "slug": "ce18643",
+      "images": [
+        "/catalog/colheitadeira/ce18643.png"
+      ]
+    },
+    {
+      "code": "DE19851",
+      "name": "Tampa do Rolamento de Encosto",
+      "models": "",
+      "page": 9,
+      "slug": "de19851",
+      "images": [
+        "/catalog/colheitadeira/de19851.png"
+      ]
+    },
+    {
+      "code": "CE18644",
+      "name": "COROA",
+      "models": "",
+      "page": 9,
+      "slug": "ce18644",
+      "images": [
+        "/catalog/colheitadeira/ce18644.png"
+      ]
+    },
+    {
+      "code": "H174603",
+      "name": "PORCA M33",
+      "models": "",
+      "page": 9,
+      "slug": "h174603",
+      "images": [
+        "/catalog/colheitadeira/h174603.png"
+      ]
+    },
+    {
+      "code": "CE18641",
+      "name": "Polia",
+      "models": "",
+      "page": 9,
+      "slug": "ce18641",
+      "images": [
+        "/catalog/colheitadeira/ce18641.png",
+        "/catalog/colheitadeira/ce18641-2.png"
+      ]
+    },
+    {
+      "code": "AXE17154",
+      "name": "Acoplamento Estriado do Alojamento 20 EST.- TÊMPERADA",
+      "models": "",
+      "page": 10,
+      "slug": "axe17154",
+      "images": [
+        "/catalog/colheitadeira/axe17154.png",
+        "/catalog/colheitadeira/axe17154-2.png"
+      ]
+    },
+    {
+      "code": "H204108",
+      "name": "Acoplamento Sem-Fim de Descarga 25 EST.- TÊMPERADA",
+      "models": "",
+      "page": 10,
+      "slug": "h204108",
+      "images": [
+        "/catalog/colheitadeira/h204108.png",
+        "/catalog/colheitadeira/h204108-2.png"
+      ]
+    },
+    {
+      "code": "AH124878",
+      "name": "Luvas de Descarga STS 13 Estrias-TÊMPERADA",
+      "models": "",
+      "page": 10,
+      "slug": "ah124878",
+      "images": [
+        "/catalog/colheitadeira/ah124878.png",
+        "/catalog/colheitadeira/ah124878-2.png",
+        "/catalog/colheitadeira/ah124878-3.png",
+        "/catalog/colheitadeira/ah124878-4.png"
+      ]
+    },
+    {
+      "code": "H204109",
+      "name": "Munhão do Tubo Descarregador - 25 Estrias-TÊMPERADA",
+      "models": "",
+      "page": 10,
+      "slug": "h204109",
+      "images": [
+        "/catalog/colheitadeira/h204109.png",
+        "/catalog/colheitadeira/h204109-2.png"
+      ]
+    },
+    {
+      "code": "H128861",
+      "name": "Bucha Tubo Sem-Fim 19 Estrias- TÊMPERADA",
+      "models": "",
+      "page": 10,
+      "slug": "h128861",
+      "images": [
+        "/catalog/colheitadeira/h128861.png",
+        "/catalog/colheitadeira/h128861-2.png"
+      ]
+    },
+    {
+      "code": "H116292",
+      "name": "Bucha Tubo Sem-fim 19 Estrias- TÊMPERADA",
+      "models": "",
+      "page": 10,
+      "slug": "h116292",
+      "images": [
+        "/catalog/colheitadeira/h116292.png",
+        "/catalog/colheitadeira/h116292-2.png"
+      ]
+    },
+    {
+      "code": "AXE59447",
+      "name": "CUBO ROLO CENTRAL 6 EST",
+      "models": "",
+      "page": 11,
+      "slug": "axe59447",
+      "images": [
+        "/catalog/colheitadeira/axe59447.png"
+      ]
+    },
+    {
+      "code": "AXE74775",
+      "name": "Eixo de acionamento da bomba",
+      "models": "",
+      "page": 11,
+      "slug": "axe74775",
+      "images": [
+        "/catalog/colheitadeira/axe74775.png"
+      ]
+    },
+    {
+      "code": "CE19417",
+      "name": "Engrenagem da Caixa de Engrenagens de Alimentação Central",
+      "models": "",
+      "page": 11,
+      "slug": "ce19417",
+      "images": [
+        "/catalog/colheitadeira/ce19417.png"
+      ]
+    },
+    {
+      "code": "DE30810",
+      "name": "EIXO MOTRIZ CA620 PLAT.MILHO",
+      "models": "",
+      "page": 11,
+      "slug": "de30810",
+      "images": [
+        "/catalog/colheitadeira/de30810.png"
+      ]
+    },
+    {
+      "code": "H131098",
+      "name": "ARRASTADOR ACIONAMENTO",
+      "models": "",
+      "page": 11,
+      "slug": "h131098",
+      "images": [
+        "/catalog/colheitadeira/h131098.png",
+        "/catalog/colheitadeira/h131098-2.png"
+      ]
+    },
+    {
+      "code": "H165663",
+      "name": "SEMI EIXO DIREITO REDUCAO",
+      "models": "",
+      "page": 12,
+      "slug": "h165663",
+      "images": [
+        "/catalog/colheitadeira/h165663.png"
+      ]
+    },
+    {
+      "code": "H173411",
+      "name": "Porca Rebite Sextavada",
+      "models": "",
+      "page": 12,
+      "slug": "h173411",
+      "images": [
+        "/catalog/colheitadeira/h173411.png"
+      ]
+    },
+    {
+      "code": "H215085",
+      "name": "EIXO CAIXA DE ENGRENAGEM SEM FIM",
+      "models": "",
+      "page": 12,
+      "slug": "h215085",
+      "images": [
+        "/catalog/colheitadeira/h215085.png"
+      ]
+    },
+    {
+      "code": "HXE16941",
+      "name": "EIXO CAIXA DE ENGRENAGEM DESCARREGADOR",
+      "models": "",
+      "page": 12,
+      "slug": "hxe16941",
+      "images": [
+        "/catalog/colheitadeira/hxe16941.png"
+      ]
+    },
+    {
+      "code": "HXE59257",
+      "name": "Roda Fônica",
+      "models": "",
+      "page": 12,
+      "slug": "hxe59257",
+      "images": [
+        "/catalog/colheitadeira/hxe59257.png"
+      ]
+    },
+    {
+      "code": "HXE135694",
+      "name": "Bucha do Piso",
+      "models": "",
+      "page": 12,
+      "slug": "hxe135694",
+      "images": [
+        "/catalog/colheitadeira/hxe135694.png"
+      ]
+    },
+    {
+      "code": "HXE174616",
+      "name": "Eixo Intermediário do Elevador Secundário",
+      "models": "",
+      "page": 13,
+      "slug": "hxe174616",
+      "images": [
+        "/catalog/colheitadeira/hxe174616.png"
+      ]
+    },
+    {
+      "code": "A49465",
+      "name": "BUCHA DO BRACO DO ESTABILIZADOR",
+      "models": "",
+      "page": 13,
+      "slug": "a49465",
+      "images": [
+        "/catalog/colheitadeira/a49465.png"
+      ]
+    },
+    {
+      "code": "AH169497",
+      "name": "Rolamento de Esferas do Seguidor do Came",
+      "models": "",
+      "page": 13,
+      "slug": "ah169497",
+      "images": [
+        "/catalog/colheitadeira/ah169497.png"
+      ]
+    },
+    {
+      "code": "AH173595",
+      "name": "PONTEIRA ESTR. SEM FIM H17",
+      "models": "",
+      "page": 13,
+      "slug": "ah173595",
+      "images": [
+        "/catalog/colheitadeira/ah173595.png"
+      ]
+    },
+    {
+      "code": "HXE39520",
+      "name": "BUCHA ESTRUTURAL PRINCIPAL",
+      "models": "",
+      "page": 13,
+      "slug": "hxe39520",
+      "images": [
+        "/catalog/colheitadeira/hxe39520.png"
+      ]
+    },
+    {
+      "code": "CE18652",
+      "name": "CAPA DO ROLAMENTO",
+      "models": "",
+      "page": 13,
+      "slug": "ce18652",
+      "images": [
+        "/catalog/colheitadeira/ce18652.png"
+      ]
+    },
+    {
+      "code": "H167127",
+      "name": "Bucha Faca Curva Picador",
+      "models": "",
+      "page": 14,
+      "slug": "h167127",
+      "images": [
+        "/catalog/colheitadeira/h167127.png"
+      ]
+    },
+    {
+      "code": "H218499",
+      "name": "Bucha Faca Curva Picador",
+      "models": "",
+      "page": 14,
+      "slug": "h218499",
+      "images": [
+        "/catalog/colheitadeira/h218499.png"
+      ]
+    },
+    {
+      "code": "H156100",
+      "name": "Bucha do picador para faca reta",
+      "models": "",
+      "page": 14,
+      "slug": "h156100",
+      "images": [
+        "/catalog/colheitadeira/h156100.png",
+        "/catalog/colheitadeira/h156100-2.png"
+      ]
+    },
+    {
+      "code": "H156101",
+      "name": "Arruela faca picador Palha",
+      "models": "",
+      "page": 14,
+      "slug": "h156101",
+      "images": [
+        "/catalog/colheitadeira/h156101.png"
+      ]
+    },
+    {
+      "code": "HXE15909",
+      "name": "ESPACADOR PICADOR DE PALHA",
+      "models": "",
+      "page": 14,
+      "slug": "hxe15909",
+      "images": [
+        "/catalog/colheitadeira/hxe15909.png"
+      ]
+    },
+    {
+      "code": "HXE59496",
+      "name": "Bucha do picador",
+      "models": "",
+      "page": 14,
+      "slug": "hxe59496",
+      "images": [
+        "/catalog/colheitadeira/hxe59496.png"
+      ]
+    },
+    {
+      "code": "HXE13967",
+      "name": "Bucha do picador",
+      "models": "",
+      "page": 14,
+      "slug": "hxe13967",
+      "images": [
+        "/catalog/colheitadeira/hxe13967.png"
+      ]
+    },
+    {
+      "code": "HXE117740",
+      "name": "Pino Pivô do Fuso Traseiro",
+      "models": "",
+      "page": 15,
+      "slug": "hxe117740",
+      "images": [
+        "/catalog/colheitadeira/hxe117740.png"
+      ]
+    },
+    {
+      "code": "HXE38608",
+      "name": "Pino",
+      "models": "",
+      "page": 15,
+      "slug": "hxe38608",
+      "images": [
+        "/catalog/colheitadeira/hxe38608.png"
+      ]
+    },
+    {
+      "code": "H169914",
+      "name": "Dedo Retrátil Plataforma",
+      "models": "",
+      "page": 15,
+      "slug": "h169914",
+      "images": [
+        "/catalog/colheitadeira/h169914.png",
+        "/catalog/colheitadeira/h169914-2.png"
+      ]
+    },
+    {
+      "code": "AH228229",
+      "name": "Dedo Retrátil",
+      "models": "",
+      "page": 15,
+      "slug": "ah228229",
+      "images": [
+        "/catalog/colheitadeira/ah228229.png"
+      ]
+    },
+    {
+      "code": "AXE21246",
+      "name": "Dedo Retrátil",
+      "models": "",
+      "page": 15,
+      "slug": "axe21246",
+      "images": [
+        "/catalog/colheitadeira/axe21246.png"
+      ]
+    }
+  ],
+  "warnings": []
+}

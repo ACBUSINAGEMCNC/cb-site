@@ -1,17 +1,33 @@
-import fs from "fs/promises";
-import path from "path";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdminUser } from "@/lib/adminAuth";
+import { ensureBucket, STORAGE_BUCKET } from "@/lib/supabaseAdmin";
+import { revalidatePath } from "next/cache";
 
 export const runtime = "nodejs";
 
-function safeFilename(name: string) {
-  return name
+const IMAGE_EXTENSIONS: Record<string, string> = {
+  "image/png": "png",
+  "image/jpeg": "jpg",
+  "image/webp": "webp",
+};
+
+function sanitizeFilename(name: string) {
+  const baseName = name.replace(/\.[^.]+$/, "");
+  const sanitized = baseName
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9._-]/g, "")
+    .replace(/[^a-z0-9_-]+/g, "-")
+    .replace(/^-+|-+$/g, "")
     .slice(0, 80);
+  return sanitized || "imagem";
+}
+
+function revalidateCatalog() {
+  revalidatePath("/");
+  revalidatePath("/pecas", "page");
+  revalidatePath("/pecas/[slug]", "page");
 }
 
 export async function POST(
@@ -27,41 +43,80 @@ export async function POST(
 
   const form = await req.formData();
   const file = form.get("file");
-  const makePrimary = form.get("isPrimary") === "true";
 
   if (!(file instanceof File)) {
     return NextResponse.json({ ok: false, error: "file_missing" }, { status: 400 });
   }
-
-  const arrayBuffer = await file.arrayBuffer();
-  const buffer = Buffer.from(arrayBuffer);
-
-  const ext = path.extname(file.name || "") || ".jpg";
-  const filename = `${Date.now()}-${safeFilename(file.name || "image")}${ext}`;
-
-  const dirOnDisk = path.join(
-    process.cwd(),
-    "public",
-    "product-images",
-    String(productId)
-  );
-  await fs.mkdir(dirOnDisk, { recursive: true });
-
-  const fileOnDisk = path.join(dirOnDisk, filename);
-  await fs.writeFile(fileOnDisk, buffer);
-
-  const url = `/product-images/${productId}/${filename}`;
-
-  if (makePrimary) {
-    await prisma.productImage.updateMany({
-      where: { productId },
-      data: { isPrimary: false },
-    });
+  if (!IMAGE_EXTENSIONS[file.type]) {
+    return NextResponse.json(
+      { ok: false, error: "Formato aceito: PNG, JPEG ou WebP." },
+      { status: 415 }
+    );
+  }
+  if (file.size <= 0 || file.size > 8 * 1024 * 1024) {
+    return NextResponse.json(
+      { ok: false, error: "A imagem deve ter até 8 MB." },
+      { status: 413 }
+    );
   }
 
-  const created = await prisma.productImage.create({
-    data: { productId, url, isPrimary: makePrimary },
+  const product = await prisma.product.findUnique({
+    where: { id: productId },
+    select: { id: true },
   });
+  if (!product) {
+    return NextResponse.json({ ok: false, error: "Peça não encontrada." }, { status: 404 });
+  }
 
-  return NextResponse.json({ ok: true, image: created });
+  let storagePath: string | undefined;
+  try {
+    const supabase = await ensureBucket();
+    const extension = IMAGE_EXTENSIONS[file.type];
+    const filename = `${Date.now()}-${sanitizeFilename(file.name)}.${extension}`;
+    storagePath = `products/${productId}/${filename}`;
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const { error: uploadError } = await supabase.storage
+      .from(STORAGE_BUCKET)
+      .upload(storagePath, buffer, {
+        contentType: file.type,
+        cacheControl: "3600",
+        upsert: false,
+      });
+    if (uploadError) {
+      return NextResponse.json(
+        { ok: false, error: `Falha ao enviar imagem: ${uploadError.message}` },
+        { status: 502 }
+      );
+    }
+
+    const { data } = supabase.storage.from(STORAGE_BUCKET).getPublicUrl(storagePath);
+    const lastImage = await prisma.productImage.findFirst({
+      where: { productId },
+      orderBy: [{ sortOrder: "desc" }, { id: "desc" }],
+      select: { sortOrder: true },
+    });
+    const isPrimary = !lastImage;
+    const created = await prisma.productImage.create({
+      data: {
+        productId,
+        url: data.publicUrl,
+        storagePath,
+        isPrimary,
+        sortOrder: (lastImage?.sortOrder ?? -1) + 1,
+      },
+    });
+
+    revalidateCatalog();
+    return NextResponse.json({ ok: true, image: created });
+  } catch (error) {
+    if (storagePath) {
+      const supabase = await ensureBucket().catch(() => null);
+      if (supabase) {
+        await supabase.storage.from(STORAGE_BUCKET).remove([storagePath]).catch(() => null);
+      }
+    }
+    const message =
+      error instanceof Error ? error.message : "Não foi possível enviar a imagem.";
+    return NextResponse.json({ ok: false, error: message }, { status: 503 });
+  }
 }

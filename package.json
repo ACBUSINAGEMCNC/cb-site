@@ -12,6 +12,8 @@
     "db:migrate:sqlite": "node scripts/migrate_sqlite_to_postgres.js",
     "catalog:probe": "node scripts/catalog_probe.js",
     "catalog:import": "node scripts/catalog_import.js",
+    "catalog:extract": "node scripts/catalog_extract.mjs",
+    "catalog:seed": "tsx scripts/catalog_seed.ts",
     "images:import": "node scripts/images_import_by_code.js",
     "catalog:images": "node scripts/catalog_page_images.js"
   },
@@ -22,6 +24,7 @@
   "dependencies": {
     "@napi-rs/canvas": "^0.1.88",
     "@prisma/client": "^5.22.0",
+    "@supabase/supabase-js": "^2.119.0",
     "better-sqlite3": "^12.5.0",
     "next": "16.1.1",
     "pdf-parse": "1.1.1",

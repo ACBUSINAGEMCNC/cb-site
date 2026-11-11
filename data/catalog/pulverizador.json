@@ -1,0 +1,298 @@
+{
+  "machine": "pulverizador",
+  "source": "Catálogo de Peças John Deere (pulverizador).pdf",
+  "items": [
+    {
+      "code": "AN207684",
+      "name": "Barra da Suspensão",
+      "models": "",
+      "page": 2,
+      "slug": "an207684",
+      "images": [
+        "/catalog/pulverizador/an207684.png"
+      ]
+    },
+    {
+      "code": "AKK17910",
+      "name": "Bucha Lateral",
+      "models": "",
+      "page": 2,
+      "slug": "akk17910",
+      "images": [
+        "/catalog/pulverizador/akk17910.png"
+      ]
+    },
+    {
+      "code": "AKK17445",
+      "name": "Bucha",
+      "models": "",
+      "page": 2,
+      "slug": "akk17445",
+      "images": [
+        "/catalog/pulverizador/akk17445.png"
+      ]
+    },
+    {
+      "code": "AKK22640",
+      "name": "Articulação Ajustável",
+      "models": "",
+      "page": 2,
+      "slug": "akk22640",
+      "images": [
+        "/catalog/pulverizador/akk22640.png"
+      ]
+    },
+    {
+      "code": "AKK32262",
+      "name": "Bucha",
+      "models": "",
+      "page": 2,
+      "slug": "akk32262",
+      "images": [
+        "/catalog/pulverizador/akk32262.png"
+      ]
+    },
+    {
+      "code": "AKK26885",
+      "name": "Bucha",
+      "models": "",
+      "page": 2,
+      "slug": "akk26885",
+      "images": [
+        "/catalog/pulverizador/akk26885.png"
+      ]
+    },
+    {
+      "code": "AKK32282",
+      "name": "Bucha",
+      "models": "",
+      "page": 3,
+      "slug": "akk32282",
+      "images": [
+        "/catalog/pulverizador/akk32282.png"
+      ]
+    },
+    {
+      "code": "AN305583",
+      "name": "Fixador do Pino Pivô",
+      "models": "",
+      "page": 3,
+      "slug": "an305583",
+      "images": [
+        "/catalog/pulverizador/an305583.png"
+      ]
+    },
+    {
+      "code": "AN305584",
+      "name": "Fixador do Pino Pivô",
+      "models": "",
+      "page": 3,
+      "slug": "an305584",
+      "images": [
+        "/catalog/pulverizador/an305584.png"
+      ]
+    },
+    {
+      "code": "AN402452",
+      "name": "Articulação de Bloqueio do Implemento",
+      "models": "",
+      "page": 3,
+      "slug": "an402452",
+      "images": [
+        "/catalog/pulverizador/an402452.png"
+      ]
+    },
+    {
+      "code": "AN406572",
+      "name": "Fixador do Pino Pivô",
+      "models": "",
+      "page": 3,
+      "slug": "an406572",
+      "images": [
+        "/catalog/pulverizador/an406572.png"
+      ]
+    },
+    {
+      "code": "KK23589",
+      "name": "Bucha Flangeada",
+      "models": "",
+      "page": 4,
+      "slug": "kk23589",
+      "images": [
+        "/catalog/pulverizador/kk23589.png"
+      ]
+    },
+    {
+      "code": "KK24979",
+      "name": "Bucha",
+      "models": "",
+      "page": 4,
+      "slug": "kk24979",
+      "images": [
+        "/catalog/pulverizador/kk24979.png"
+      ]
+    },
+    {
+      "code": "KK26907",
+      "name": "Pino Perfurado",
+      "models": "",
+      "page": 4,
+      "slug": "kk26907",
+      "images": [
+        "/catalog/pulverizador/kk26907.png"
+      ]
+    },
+    {
+      "code": "KK26906",
+      "name": "Pino Perfurado",
+      "models": "",
+      "page": 4,
+      "slug": "kk26906",
+      "images": [
+        "/catalog/pulverizador/kk26906.png"
+      ]
+    },
+    {
+      "code": "KK26909",
+      "name": "Pino Pivô de Separação",
+      "models": "",
+      "page": 4,
+      "slug": "kk26909",
+      "images": [
+        "/catalog/pulverizador/kk26909.png"
+      ]
+    },
+    {
+      "code": "KK27642",
+      "name": "Bucha Flangeada",
+      "models": "",
+      "page": 4,
+      "slug": "kk27642",
+      "images": [
+        "/catalog/pulverizador/kk27642.png"
+      ]
+    },
+    {
+      "code": "KK60453",
+      "name": "Pino Pivô",
+      "models": "",
+      "page": 5,
+      "slug": "kk60453",
+      "images": [
+        "/catalog/pulverizador/kk60453.png"
+      ]
+    },
+    {
+      "code": "N206701",
+      "name": "Porca do Impulsor somente para Reparo",
+      "models": "",
+      "page": 5,
+      "slug": "n206701",
+      "images": [
+        "/catalog/pulverizador/n206701.png"
+      ]
+    },
+    {
+      "code": "N302245",
+      "name": "Tirante da Suspensão",
+      "models": "",
+      "page": 5,
+      "slug": "n302245",
+      "images": [
+        "/catalog/pulverizador/n302245.png"
+      ]
+    },
+    {
+      "code": "N302121",
+      "name": "Porca, M180",
+      "models": "",
+      "page": 5,
+      "slug": "n302121",
+      "images": [
+        "/catalog/pulverizador/n302121.png"
+      ]
+    },
+    {
+      "code": "N302269",
+      "name": "Bucha Espaçadora da Estrutura do Chassi para Pulverizador",
+      "models": "",
+      "page": 5,
+      "slug": "n302269",
+      "images": [
+        "/catalog/pulverizador/n302269.png"
+      ]
+    },
+    {
+      "code": "N305164",
+      "name": "Espaçador de Ajuste da Bitola Hidráulica Superior do Eixo",
+      "models": "",
+      "page": 6,
+      "slug": "n305164",
+      "images": [
+        "/catalog/pulverizador/n305164.png"
+      ]
+    },
+    {
+      "code": "N307011",
+      "name": "Eixo da Bomba de Solução - MENOR",
+      "models": "",
+      "page": 6,
+      "slug": "n307011-menor",
+      "images": [
+        "/catalog/pulverizador/n307011-menor.png"
+      ]
+    },
+    {
+      "code": "N315286",
+      "name": "Pino da Ranhura",
+      "models": "",
+      "page": 6,
+      "slug": "n315286",
+      "images": [
+        "/catalog/pulverizador/n315286.png"
+      ]
+    },
+    {
+      "code": "N307011",
+      "name": "Eixo da Bomba de Solução - MAIOR",
+      "models": "",
+      "page": 6,
+      "slug": "n307011-maior",
+      "images": [
+        "/catalog/pulverizador/n307011-maior.png"
+      ]
+    },
+    {
+      "code": "N205639",
+      "name": "Retentor do Colar das Vedações da Suspensão",
+      "models": "",
+      "page": 6,
+      "slug": "n205639",
+      "images": [
+        "/catalog/pulverizador/n205639.png"
+      ]
+    },
+    {
+      "code": "N316796",
+      "name": "Porca, M200",
+      "models": "",
+      "page": 6,
+      "slug": "n316796",
+      "images": [
+        "/catalog/pulverizador/n316796.png"
+      ]
+    },
+    {
+      "code": "AN206485",
+      "name": "/AKK11368 Carcaça Volante da Bomba",
+      "models": "Série 4720, 4730, M4030 e M4040)",
+      "page": 7,
+      "slug": "an206485",
+      "images": [
+        "/catalog/pulverizador/an206485.png",
+        "/catalog/pulverizador/an206485-2.png"
+      ]
+    }
+  ],
+  "warnings": []
+}

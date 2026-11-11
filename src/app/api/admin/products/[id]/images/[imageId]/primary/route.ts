@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { requireAdminUser } from "@/lib/adminAuth";
 
@@ -17,15 +18,31 @@ export async function POST(
 
   if (!productId || !imgId) return NextResponse.json({ ok: false }, { status: 400 });
 
-  await prisma.productImage.updateMany({
+  const image = await prisma.productImage.findFirst({
+    where: { id: imgId, productId },
+  });
+  if (!image) {
+    return NextResponse.json({ ok: false, error: "Imagem não encontrada." }, { status: 404 });
+  }
+
+  await prisma.$transaction([
+    prisma.productImage.updateMany({
+      where: { productId },
+      data: { isPrimary: false },
+    }),
+    prisma.productImage.update({
+      where: { id: imgId },
+      data: { isPrimary: true },
+    }),
+  ]);
+
+  revalidatePath("/");
+  revalidatePath("/pecas", "page");
+  revalidatePath("/pecas/[slug]", "page");
+  const images = await prisma.productImage.findMany({
     where: { productId },
-    data: { isPrimary: false },
+    orderBy: [{ sortOrder: "asc" }, { id: "asc" }],
   });
 
-  await prisma.productImage.update({
-    where: { id: imgId },
-    data: { isPrimary: true },
-  });
-
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, images });
 }

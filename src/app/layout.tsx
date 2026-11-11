@@ -1,22 +1,39 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Barlow_Condensed, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import { SITE } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const displayFont = Barlow_Condensed({
+  variable: "--font-barlow-condensed",
+  subsets: ["latin", "latin-ext"],
+  weight: ["600", "700", "800"],
+  display: "swap",
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const bodyFont = Inter({
+  variable: "--font-inter",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
+const codeFont = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "ACB Usinagem CNC Ltda. | Artcompany - Peças Agrícolas",
+  title: {
+    default: SITE.name,
+    template: `%s | ${SITE.name}`,
+  },
   description:
-    "Peças agrícolas paralelas de alta performance. Artcompany (Indústria de Peças Agrícolas) e ACB Usinagem CNC Ltda.",
+    "Peças similares e compatíveis para máquinas agrícolas, com usinagem CNC e atendimento direto em Cascavel - PR.",
+  openGraph: {
+    title: SITE.name,
+    description: "Usinagem CNC e peças agrícolas similares/compatíveis.",
+    locale: "pt_BR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -26,11 +43,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${displayFont.variable} ${bodyFont.variable} ${codeFont.variable} bg-bg font-sans text-fg antialiased`}>
         {children}
-        <WhatsAppFloatingButton />
       </body>
     </html>
   );
