@@ -76,6 +76,24 @@ const CARDS: HeroCardConfig[] = [
   },
 ];
 
+/** período de uma volta completa da órbita (ms) */
+const ORBIT_PERIOD_MS = 12_000;
+const ORBIT_OMEGA = (Math.PI * 2) / ORBIT_PERIOD_MS;
+/** raio horizontal da órbita como fração da largura do palco */
+const ORBIT_RX_RATIO = 0.1;
+/** raio vertical da órbita como fração da altura do palco */
+const ORBIT_RY_RATIO = 0.08;
+/** profundidade: quem está "na frente" cresce, quem está "atrás" encolhe */
+const ORBIT_SCALE_MID = 0.99;
+const ORBIT_SCALE_AMP = 0.05; // escala varia entre 0.94 e 1.04
+/** scroll: a partir de ~1.5x a altura do hero a órbita amortece até 30% do raio */
+const ORBIT_DAMP_START = 1.5;
+const ORBIT_DAMP_END = 1.9;
+const ORBIT_DAMP_MIN = 0.3;
+
+const clamp = (value: number, min: number, max: number) =>
+  Math.min(max, Math.max(min, value));
+
 export default function HeroShowcase() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -87,21 +105,68 @@ export default function HeroShowcase() {
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     let rafId = 0;
     let visible = false;
+    let stageW = container.clientWidth;
+    let stageH = container.clientHeight;
+    let heroH = container.closest("section")?.offsetHeight ?? stageH;
+
+    const measure = () => {
+      stageW = container.clientWidth;
+      stageH = container.clientHeight;
+      heroH = container.closest("section")?.offsetHeight ?? stageH;
+    };
 
     const applyFrame = (time: number) => {
       const scroll = window.scrollY;
+      const theta = time * ORBIT_OMEGA;
+      // amortecimento da órbita ao sair de cena (volta ~30% do raio)
+      const dampT =
+        heroH > 0
+          ? clamp(
+              (scroll / heroH - ORBIT_DAMP_START) /
+                (ORBIT_DAMP_END - ORBIT_DAMP_START),
+              0,
+              1
+            )
+          : 0;
+      const orbitDamp = 1 - (1 - ORBIT_DAMP_MIN) * dampT;
+      const orbitRX = stageW * ORBIT_RX_RATIO * orbitDamp;
+      const orbitRY = stageH * ORBIT_RY_RATIO * orbitDamp;
+
+      const depths = new Array<number>(CARDS.length).fill(0);
       cardRefs.current.forEach((element, index) => {
         if (!element) return;
         const config = CARDS[index];
+        // fases 0 / 120 / 240 graus — as peças trocam de lugar na elipse
+        const angle = theta + (index * Math.PI * 2) / CARDS.length;
+        const orbitX = Math.cos(angle) * orbitRX;
+        const orbitY = Math.sin(angle) * orbitRY;
+        // -1 = fundo (menor, atrás), +1 = frente (maior, na frente)
+        const depth = Math.sin(angle);
+        depths[index] = depth;
         const idleY =
           Math.sin(time * config.idleSpeed + config.idlePhase) *
           config.idleAmp;
         const idleRot =
           Math.sin(time * config.idleSpeed * 0.7 + config.idlePhase) *
           config.idleRotAmp;
-        const y = idleY + scroll * config.scrollY;
+        const x = orbitX;
+        const y = idleY + orbitY + scroll * config.scrollY;
         const rot = idleRot + scroll * config.scrollRot;
-        element.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0) rotate(${rot.toFixed(3)}deg)`;
+        const scale = ORBIT_SCALE_MID + ORBIT_SCALE_AMP * depth * orbitDamp;
+        element.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) rotate(${rot.toFixed(3)}deg) scale(${scale.toFixed(3)})`;
+        const depthNorm = (depth * orbitDamp + 1) / 2;
+        element.style.opacity = (0.9 + 0.1 * depthNorm).toFixed(3);
+      });
+
+      // z-index por profundidade: quem está atrás passa por trás das outras
+      const order = depths
+        .map((depth, index) => ({ depth, index }))
+        .sort((a, b) => a.depth - b.depth);
+      order.forEach(({ index }, rank) => {
+        const element = cardRefs.current[index];
+        if (!element) return;
+        const z = String(rank + 1);
+        if (element.style.zIndex !== z) element.style.zIndex = z;
       });
     };
 
@@ -123,9 +188,16 @@ export default function HeroShowcase() {
 
     const clearTransforms = () => {
       cardRefs.current.forEach((element) => {
-        if (element) element.style.transform = "";
+        if (!element) return;
+        element.style.transform = "";
+        element.style.zIndex = "";
+        element.style.opacity = "";
       });
     };
+
+    measure();
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(container);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -150,6 +222,7 @@ export default function HeroShowcase() {
     return () => {
       stop();
       observer.disconnect();
+      resizeObserver.disconnect();
       motionQuery.removeEventListener("change", onMotionChange);
       clearTransforms();
     };
