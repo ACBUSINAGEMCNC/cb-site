@@ -10,7 +10,8 @@ const navigation = [
   { href: "/admin", label: "Dashboard" },
   { href: "/admin/pecas", label: "Peças" },
   { href: "/admin/categorias", label: "Categorias" },
-  { href: "/admin/importar", label: "Importar catálogo" },
+  { href: "/admin/backup", label: "Backup" },
+  { href: "/admin/usuarios", label: "Usuários" },
   { href: "/admin/orcamentos", label: "Orçamentos" },
 ];
 

@@ -76,10 +76,10 @@ export default async function AdminDashboardPage() {
             </p>
           </div>
           <Link
-            href="/admin/importar"
+            href="/admin/backup"
             className="inline-flex min-h-10 items-center justify-center bg-accent px-4 text-sm font-bold text-accent-fg"
           >
-            Importar catálogo
+            Ir ao centro de backup
           </Link>
         </section>
       ) : null}
