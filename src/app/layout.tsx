@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 
@@ -45,6 +46,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${displayFont.variable} ${bodyFont.variable} ${codeFont.variable} bg-bg font-sans text-fg antialiased`}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
