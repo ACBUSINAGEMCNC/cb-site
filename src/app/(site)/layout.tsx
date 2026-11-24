@@ -1,5 +1,6 @@
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import TrackVisit from "@/components/TrackVisit";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 import { QuoteCartProvider } from "@/components/cart/CartProvider";
 
@@ -10,6 +11,7 @@ export default function SiteLayout({ children }: Readonly<{ children: React.Reac
       {children}
       <SiteFooter />
       <WhatsAppFloatingButton />
+      <TrackVisit />
     </QuoteCartProvider>
   );
 }

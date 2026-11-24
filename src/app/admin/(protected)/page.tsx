@@ -6,13 +6,38 @@ import { quoteStatusClass, quoteStatusLabel } from "@/lib/quoteStatus";
 
 export const dynamic = "force-dynamic";
 
+const TRACK_DAYS = 30;
+
+function referrerLabel(referrer: string | null): string {
+  if (!referrer) return "direto/WhatsApp";
+  if (/wa\.me|whatsapp/i.test(referrer)) return "WhatsApp";
+  try {
+    return new URL(referrer).hostname.replace(/^www\./, "") || "direto/WhatsApp";
+  } catch {
+    return referrer;
+  }
+}
+
 export default async function AdminDashboardPage() {
+  const now = new Date();
+  const startOfToday = new Date(now);
+  startOfToday.setHours(0, 0, 0, 0);
+  const last7Days = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+  const last30Days = new Date(now.getTime() - TRACK_DAYS * 24 * 60 * 60 * 1000);
+
   const [
     activeProducts,
     productsWithoutImages,
     categories,
     highlights,
     recentQuotes,
+    viewsToday,
+    views7d,
+    views30d,
+    uniqueVisitorGroups,
+    pageGroups,
+    locationGroups,
+    referrerGroups,
   ] = await Promise.all([
     prisma.product.count({ where: { isActive: true } }),
     prisma.product.count({
@@ -25,7 +50,82 @@ export default async function AdminDashboardPage() {
       take: 10,
       include: { _count: { select: { items: true } } },
     }),
+    prisma.pageView.count({ where: { createdAt: { gte: startOfToday } } }),
+    prisma.pageView.count({ where: { createdAt: { gte: last7Days } } }),
+    prisma.pageView.count({ where: { createdAt: { gte: last30Days } } }),
+    prisma.pageView.groupBy({
+      by: ["visitor"],
+      where: { createdAt: { gte: last30Days }, visitor: { not: null } },
+    }),
+    prisma.pageView.groupBy({
+      by: ["path"],
+      where: { createdAt: { gte: last30Days } },
+      _count: { path: true },
+      orderBy: { _count: { path: "desc" } },
+      take: 8,
+    }),
+    prisma.pageView.groupBy({
+      by: ["city", "country"],
+      where: { createdAt: { gte: last30Days } },
+      _count: { _all: true },
+    }),
+    prisma.pageView.groupBy({
+      by: ["referrer"],
+      where: { createdAt: { gte: last30Days } },
+      _count: { _all: true },
+    }),
   ]);
+
+  const uniqueVisitors = uniqueVisitorGroups.length;
+
+  const visitStats = [
+    { label: "Visitas hoje", value: viewsToday },
+    { label: "Últimos 7 dias", value: views7d },
+    { label: "Últimos 30 dias", value: views30d },
+    { label: "Únicos (30d)", value: uniqueVisitors },
+  ];
+
+  const topPages = pageGroups.map((group) => ({
+    label: group.path,
+    count: group._count.path,
+  }));
+
+  const locationTotals = new Map<string, number>();
+  for (const group of locationGroups) {
+    const label = group.city
+      ? `${group.city}, ${group.country ?? "desconhecido"}`
+      : (group.country ?? "desconhecido");
+    locationTotals.set(
+      label,
+      (locationTotals.get(label) ?? 0) + group._count._all,
+    );
+  }
+  const topLocations = [...locationTotals.entries()]
+    .map(([label, count]) => ({ label, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 8);
+
+  const referrerTotals = new Map<string, number>();
+  for (const group of referrerGroups) {
+    const label = referrerLabel(group.referrer);
+    referrerTotals.set(
+      label,
+      (referrerTotals.get(label) ?? 0) + group._count._all,
+    );
+  }
+  const topReferrers = [...referrerTotals.entries()]
+    .map(([label, count]) => ({ label, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 8);
+
+  const visitTables = [
+    { title: "Top páginas", rows: topPages },
+    { title: "Top locais", rows: topLocations },
+    { title: "Origens", rows: topReferrers },
+  ];
+
+  const formatDate = (date: Date) =>
+    date.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric" });
 
   const stats = [
     { label: "Peças ativas", value: activeProducts },
@@ -53,7 +153,54 @@ export default async function AdminDashboardPage() {
         </Link>
       </div>
 
-      <section aria-label="Resumo do catálogo" className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      <section aria-label="Visitas" className="mt-7">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 className="font-display text-2xl font-bold uppercase text-fg">
+            Visitas
+          </h2>
+          <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+            {formatDate(last30Days)} — {formatDate(now)}
+          </p>
+        </div>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          {visitStats.map((stat) => (
+            <article key={stat.label} className="border border-line bg-surface p-5">
+              <p className="text-sm text-muted">{stat.label}</p>
+              <p className="mt-3 font-mono text-4xl text-fg">{stat.value}</p>
+            </article>
+          ))}
+        </div>
+        <div className="mt-4 grid gap-4 lg:grid-cols-3">
+          {visitTables.map((table) => (
+            <div key={table.title} className="border border-line bg-surface">
+              <h3 className="border-b border-line px-4 py-3 font-mono text-xs uppercase tracking-[0.14em] text-accent">
+                {table.title}
+              </h3>
+              {table.rows.length > 0 ? (
+                <ul className="divide-y divide-line">
+                  {table.rows.map((row) => (
+                    <li
+                      key={row.label}
+                      className="flex items-center justify-between gap-3 px-4 py-2.5"
+                    >
+                      <span className="min-w-0 truncate text-sm text-fg">
+                        {row.label}
+                      </span>
+                      <span className="shrink-0 font-mono text-xs text-muted">
+                        {row.count}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="px-4 py-5 text-sm text-muted">Sem dados ainda.</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section aria-label="Resumo do catálogo" className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {stats.map((stat) => (
           <article key={stat.label} className="border border-line bg-surface p-5">
             <p className="text-sm text-muted">{stat.label}</p>
